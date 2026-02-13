@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Verb Trainer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div class="animated-bg"></div>
+
+    <div class="container">
+        <header>
+            <h1 class="aesthetic-title">Verb Master C2</h1>
+            <div class="file-upload-container">
+               <label for="jsonUpload" class="custom-file-upload">
+                    📂 Cargar JSON Manual
+                </label>
+                <input type="file" id="jsonUpload" accept=".json">
+            </div>
+        </header>
+
+        <main id="game-area">
+            <div class="card">
+                <div class="card-header">
+                    <h2 id="prompt-text">Cargando...</h2>
+                    </div>
+
+                <div class="inputs-container" id="inputs-container">
+                    <div class="input-group" data-type="base">
+                        <div class="label-row">
+                            <label>Base Form</label>
+                            <button class="icon-btn audio-btn" data-form="base" title="Escuchar">🔊</button>
+                        </div>
+                        <input type="text" id="input-base" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group" data-type="past">
+                        <div class="label-row">
+                            <label>Past Simple</label>
+                            <button class="icon-btn audio-btn" data-form="past" title="Escuchar">🔊</button>
+                        </div>
+                        <input type="text" id="input-past" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group" data-type="participle">
+                        <div class="label-row">
+                            <label>Past Participle</label>
+                            <button class="icon-btn audio-btn" data-form="participle" title="Escuchar">🔊</button>
+                        </div>
+                        <input type="text" id="input-participle" autocomplete="off">
+                    </div>
+                    
+                    <div class="input-group" data-type="spanish">
+                        <label>Español</label>
+                        <input type="text" id="input-spanish" autocomplete="off">
+                    </div>
+                </div>
+
+                <div id="feedback-message" class="feedback hidden"></div>
+
+                <button id="check-btn">Comprobar</button>
+            </div>
+
+            <div class="navigation-panel">
+                <button id="prev-btn" disabled>← Anterior</button>
+                <div id="nav-boxes-container" class="nav-boxes"></div>
+                <button id="next-btn">Siguiente →</button>
+            </div>
+        </main>
+
+        <div id="results-modal" class="modal hidden">
+            <div class="modal-content card">
+                <h2>¡Completado!</h2>
+                <p id="score-text">Tu puntuación: 0%</p>
+                <button id="restart-btn">Volver a empezar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
