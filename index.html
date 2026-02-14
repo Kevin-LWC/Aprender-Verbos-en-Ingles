@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verb Master C2 - Glass Edition</title>
-    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
@@ -17,10 +16,6 @@
         <a href="#" data-folder="verbs" class="nav-link active">Verbs</a>
         <a href="#" data-folder="phrasal_verbs" class="nav-link">Phrasal Verbs</a>
         <a href="#" data-folder="pronunciation" class="nav-link">Pronunciation</a>
-        <a href="#" data-folder="slang" class="nav-link">Slang</a>
-        <a href="#" data-folder="idioms" class="nav-link">Idioms</a>
-        <a href="#" data-folder="top3000" class="nav-link">Top 3000</a>
-        <a href="#" data-folder="linkedin" class="nav-link">LinkedIn</a>
     </nav>
 
     <div class="container">
@@ -49,12 +44,14 @@
                 </div>
 
                 <div class="inputs-container" id="inputs-container">
+                    
                     <div class="input-group" data-type="base">
                         <div class="label-row">
-                            <label>Base Form</label>
+                            <label id="label-base">Base Form</label>
                             <button class="icon-btn audio-btn" data-form="base" tabindex="-1">🔊</button>
                         </div>
                         <input type="text" id="input-base" autocomplete="off">
+                        <div class="correction-text hidden" id="correct-base"></div>
                     </div>
                     
                     <div class="input-group" data-type="past">
@@ -63,6 +60,7 @@
                             <button class="icon-btn audio-btn" data-form="past" tabindex="-1">🔊</button>
                         </div>
                         <input type="text" id="input-past" autocomplete="off">
+                        <div class="correction-text hidden" id="correct-past"></div>
                     </div>
                     
                     <div class="input-group" data-type="participle">
@@ -71,11 +69,13 @@
                             <button class="icon-btn audio-btn" data-form="participle" tabindex="-1">🔊</button>
                         </div>
                         <input type="text" id="input-participle" autocomplete="off">
+                        <div class="correction-text hidden" id="correct-participle"></div>
                     </div>
                     
                     <div class="input-group" data-type="spanish">
                         <label>Español</label>
                         <input type="text" id="input-spanish" autocomplete="off">
+                        <div class="correction-text hidden" id="correct-spanish"></div>
                     </div>
                 </div>
 
@@ -86,10 +86,7 @@
 
             <div class="navigation-panel">
                 <button id="prev-btn" class="glass-nav-btn" disabled>← Anterior</button>
-                
-                <div id="nav-boxes-container" class="nav-boxes">
-                    </div>
-
+                <div id="nav-boxes-container" class="nav-boxes"></div>
                 <button id="next-btn" class="glass-nav-btn">Siguiente →</button>
             </div>
         </main>
