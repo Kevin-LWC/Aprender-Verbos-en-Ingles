@@ -1,335 +1,218 @@
-// --- CONFIGURACIÓN GITHUB ---
-const GITHUB_CONFIG = {
-    username: "Kevin-LWC",
-    repo: "Aprender-Verbos-en-Ingles",
-    folder: "data" 
-};
-
-let verbData = [];
-let currentIndex = 0;
-let score = 0;
-let questionStatus = []; 
-let currentMode = 1; 
-let currentPromptText = "";
-
-// Elementos del DOM
-const promptText = document.getElementById('prompt-text');
-const promptAudioBtn = document.getElementById('prompt-audio-btn');
-const inputs = {
-    base: document.getElementById('input-base'),
-    past: document.getElementById('input-past'),
-    participle: document.getElementById('input-participle'),
-    spanish: document.getElementById('input-spanish')
-};
-const feedbackMessage = document.getElementById('feedback-message');
-const navBoxesContainer = document.getElementById('nav-boxes-container');
-const resultsModal = document.getElementById('results-modal');
-const scoreText = document.getElementById('score-text');
-const githubFileSelect = document.getElementById('github-file-select');
-const navLinks = document.querySelectorAll('.nav-link');
-const loadingIndicator = document.getElementById('loading-indicator');
-
-// --- Inicialización ---
-window.addEventListener('DOMContentLoaded', () => {
-    loadCategory('verbs'); // Cargar categoría por defecto
-});
-
-// --- Lógica de GitHub ---
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        loadCategory(link.getAttribute('data-folder'));
-    });
-});
-
-async function loadCategory(folderName) {
-    loadingIndicator.classList.remove('hidden');
-    githubFileSelect.innerHTML = '<option>Cargando archivos...</option>';
-    githubFileSelect.disabled = true;
-    promptText.textContent = "Conectando a GitHub...";
-
-    const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.folder}/${folderName}`;
-
-    try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error(`GitHub API Error: ${response.status}`);
-        const files = await response.json();
-        const jsonFiles = files.filter(file => file.name.endsWith('.json'));
-
-        if (jsonFiles.length === 0) throw new Error("No se encontraron archivos JSON en esta carpeta.");
-
-        populateFileSelect(jsonFiles);
-        loadRemoteJson(jsonFiles[0].download_url); // Cargar el primero
-
-    } catch (error) {
-        console.error(error);
-        githubFileSelect.innerHTML = '<option>Error al cargar lista</option>';
-        promptText.textContent = "Error de conexión 😕";
-        feedbackMessage.textContent = `Detalles: ${error.message}. Verifica tu conexión o el límite de la API.`;
-        feedbackMessage.className = 'feedback error';
-        feedbackMessage.classList.remove('hidden');
-    } finally {
-        loadingIndicator.classList.add('hidden');
-    }
-}
-
-function populateFileSelect(files) {
-    githubFileSelect.innerHTML = '';
-    files.forEach(file => {
-        const option = document.createElement('option');
-        option.value = file.download_url;
-        // Formatear nombre: quitar .json y reemplazar guiones bajos por espacios
-        option.textContent = file.name.replace('.json', '').replace(/_/g, ' ').toUpperCase(); 
-        githubFileSelect.appendChild(option);
-    });
-    githubFileSelect.disabled = false;
-}
-
-githubFileSelect.addEventListener('change', (e) => {
-    if (e.target.value) loadRemoteJson(e.target.value);
-});
-
-async function loadRemoteJson(url) {
-    try {
-        promptText.textContent = "Descargando datos...";
-        resetUI();
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Error al descargar el archivo JSON");
-        const data = await response.json();
-        initGame(data);
-    } catch (error) {
-        promptText.textContent = "Error al cargar JSON";
-        console.error(error);
-    }
-}
-
-// --- Carga Manual ---
-document.getElementById('jsonUpload').addEventListener('change', (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        try {
-            const data = JSON.parse(e.target.result);
-            initGame(data);
-            githubFileSelect.value = "";
-            navLinks.forEach(l => l.classList.remove('active')); // Desactivar nav superior si es manual
-        } catch (error) {
-            alert("Error al leer el archivo JSON. Asegúrate de que el formato sea correcto.");
-        }
-    };
-    reader.readAsText(file);
-});
-
-// --- Lógica del Juego ---
-function initGame(data) {
-    if (!data || data.length === 0) {
-         promptText.textContent = "El archivo JSON está vacío.";
-         return;
-    }
-    verbData = data;
-    currentIndex = 0;
-    score = 0;
-    questionStatus = new Array(verbData.length).fill(null);
-    resultsModal.classList.add('hidden');
-    renderNavBoxes();
-    loadQuestion(currentIndex);
-}
-
-function loadQuestion(index) {
-    const verb = verbData[index];
-    if (!verb) return;
-    resetUI();
+:root {
+    /* Colores para el fondo dinámico */
+    --color-bg-1: #ff4e50;
+    --color-bg-2: #1fddff;
+    --color-bg-3: #f9d423;
     
-    // Modo aleatorio (1: Español -> Inglés, 2: Participio -> Resto)
-    currentMode = Math.random() < 0.5 ? 1 : 2;
-
-    if (currentMode === 1) {
-        promptText.textContent = capitalize(verb.spanish);
-        currentPromptText = ""; 
-        promptAudioBtn.classList.add('hidden');
-
-        toggleInputVisibility('base', true);
-        toggleInputVisibility('past', true);
-        toggleInputVisibility('participle', true);
-        toggleInputVisibility('spanish', false);
-        setTimeout(() => inputs.base.focus(), 100); // Foco automático
-    } else {
-        promptText.textContent = capitalize(verb.participle);
-        currentPromptText = verb.participle;
-        promptAudioBtn.classList.remove('hidden');
-
-        toggleInputVisibility('base', true);
-        toggleInputVisibility('past', true);
-        toggleInputVisibility('spanish', true);
-        toggleInputVisibility('participle', false);
-        inputs.participle.value = verb.participle;
-        setTimeout(() => inputs.base.focus(), 100); // Foco automático
-    }
-    updateNavigationState();
-}
-
-// --- Audio ---
-promptAudioBtn.addEventListener('click', () => {
-    if (currentPromptText) playIndividualAudio(currentPromptText);
-});
-
-document.querySelectorAll('.audio-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        btn.blur(); // Quitar foco del botón después de click
-        const formType = btn.getAttribute('data-form');
-        const verb = verbData[currentIndex];
-        if (verb && verb[formType]) {
-            playIndividualAudio(verb[formType]);
-        }
-    });
-});
-
-function playIndividualAudio(text) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US'; 
-    utterance.rate = 0.9; 
-    const voices = window.speechSynthesis.getVoices();
-    // Intentar usar una voz de Google si está disponible
-    const preferredVoice = voices.find(v => v.name.includes("Google US English")) || voices.find(v => v.lang === 'en-US');
-    if (preferredVoice) utterance.voice = preferredVoice;
-    window.speechSynthesis.speak(utterance);
-}
-
-// --- Validación ---
-document.getElementById('check-btn').addEventListener('click', checkAnswer);
-
-function checkAnswer() {
-    const verb = verbData[currentIndex];
-    let isCorrect = true;
-    let inputsToCheck = currentMode === 1 ? ['base', 'past', 'participle'] : ['base', 'past', 'spanish'];
-
-    inputsToCheck.forEach(type => {
-        const inputElem = inputs[type];
-        const userAnswer = inputElem.value.trim().toLowerCase();
-        // Asegurar que la data existe antes de lowercase
-        const correctAnswer = (verb[type] || "").toLowerCase(); 
-        
-        if (userAnswer !== correctAnswer || userAnswer === "") {
-            isCorrect = false;
-            inputElem.style.borderColor = 'var(--accent-red)';
-            inputElem.style.backgroundColor = 'rgba(255, 23, 68, 0.1)';
-            inputElem.classList.add('shake'); // Añadir efecto de vibración si quieres en CSS
-        } else {
-            inputElem.style.borderColor = 'var(--accent-green)';
-            inputElem.style.backgroundColor = 'rgba(0, 230, 118, 0.1)';
-        }
-    });
-
-    if (isCorrect) {
-        showFeedback("✅ ¡Respuesta Correcta!", "success");
-        triggerConfetti();
-        if (questionStatus[currentIndex] === null) score++;
-        questionStatus[currentIndex] = true;
-    } else {
-        showFeedback("❌ Revisa los campos en rojo.", "error");
-        questionStatus[currentIndex] = false;
-    }
+    /* Glassmorphism vars */
+    --glass-bg-main: rgba(40, 40, 40, 0.4); /* Más transparente para ver el fondo */
+    --glass-bg-tight: rgba(30, 30, 30, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-blur: 25px; /* Desenfocar más el fondo */
     
-    renderNavBoxes();
+    --text-color: #ffffff;
+    --text-muted: #e0e0e0;
+    
+    /* Colores de estado */
+    --accent-green: #00e676; /* Verde más vibrante */
+    --accent-red: #ff1744;   /* Rojo más vibrante */
+    --accent-gradient: linear-gradient(135deg, var(--color-bg-1), var(--color-bg-2));
+    
+    --input-bg: rgba(0, 0, 0, 0.4);
 }
 
-function resetUI() {
-    feedbackMessage.classList.add('hidden');
-    Object.values(inputs).forEach(input => {
-        input.value = '';
-        input.style.borderColor = 'var(--glass-border)';
-        input.style.backgroundColor = 'var(--input-bg)';
-    });
+body, html {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    color: var(--text-color);
+    overflow-x: hidden;
+    /* Eliminamos el background-color sólido para ver los gradientes */
 }
 
-function toggleInputVisibility(type, show) {
-    const group = inputs[type].parentElement;
-    show ? group.classList.remove('hidden') : group.classList.add('hidden');
+/* --- Fondo Estático con Ruido y Gradientes INTENSOS --- */
+.bg-gradient {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
+    /* Gradientes más fuertes y grandes para que se note el color */
+    background: 
+        radial-gradient(circle at 20% 40%, rgba(255, 78, 80, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(31, 221, 255, 0.5) 0%, transparent 50%),
+        radial-gradient(circle at 50% 10%, rgba(249, 212, 35, 0.3) 0%, transparent 60%),
+        linear-gradient(to bottom right, #0f0f0f, #1a1a1a); /* Base oscura para unirlo */
+    background-blend-mode: screen;
 }
 
-function showFeedback(message, type) {
-    feedbackMessage.textContent = message;
-    feedbackMessage.className = `feedback ${type}`;
+.bg-noise {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+    opacity: 0.15; /* Aumentada la opacidad del ruido */
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-function capitalize(str) { return str ? str.charAt(0).toUpperCase() + str.slice(1) : ""; }
-
-// --- Navegación ---
-function renderNavBoxes() {
-    navBoxesContainer.innerHTML = '';
-    verbData.forEach((_, index) => {
-        const box = document.createElement('div');
-        box.classList.add('nav-box');
-        // --- CORRECCIÓN AQUÍ: Añadir el número ---
-        box.textContent = index + 1; 
-        
-        if (index === currentIndex) box.classList.add('active');
-        if (questionStatus[index] === true) box.classList.add('correct');
-        if (questionStatus[index] === false) box.classList.add('incorrect');
-        
-        box.addEventListener('click', () => {
-            currentIndex = index;
-            loadQuestion(currentIndex);
-        });
-        navBoxesContainer.appendChild(box);
-    });
+/* --- Estilos Glassmorphism Genéricos --- */
+.glass-effect-main {
+    background: var(--glass-bg-main);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-
-function updateNavigationState() {
-    prevBtn.disabled = currentIndex === 0;
-    nextBtn.textContent = (currentIndex === verbData.length - 1) ? "Ver Resultados ✨" : "Siguiente →";
+.glass-effect-tight {
+    background: var(--glass-bg-tight);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
 }
 
-prevBtn.addEventListener('click', () => { if(currentIndex > 0) { currentIndex--; loadQuestion(currentIndex); }});
-nextBtn.addEventListener('click', handleNext);
-
-function handleNext() {
-    if (currentIndex < verbData.length - 1) {
-        currentIndex++;
-        loadQuestion(currentIndex);
-    } else {
-        showResults();
-    }
+.glass-effect-nav {
+    background: rgba(0, 0, 0, 0.6); /* Un poco más oscuro arriba */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
 }
 
-function showResults() {
-    const percentage = Math.round((score / verbData.length) * 100) || 0;
-    scoreText.innerHTML = `Puntuación final:<br><strong style="font-size: 3rem; color: var(--accent-green)">${percentage}%</strong><br>(${score} de ${verbData.length} correctas)`;
-    resultsModal.classList.remove('hidden');
-    triggerConfettiBig();
+
+/* --- Navegación Superior --- */
+.top-nav {
+    display: flex; justify-content: center; flex-wrap: wrap; gap: 15px;
+    padding: 15px 20px; margin-bottom: 20px;
 }
 
-document.getElementById('restart-btn').addEventListener('click', () => { initGame(verbData); });
-
-// Confetti pequeño para aciertos
-function triggerConfetti() { 
-    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 }, colors: ['#00e676', '#1fddff'] }); 
-}
-// Confetti grande para el final
-function triggerConfettiBig() {
-    var end = Date.now() + (2 * 1000);
-    (function frame() {
-        confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff4e50', '#1fddff', '#f9d423'] });
-        confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff4e50', '#1fddff', '#f9d423'] });
-        if (Date.now() < end) requestAnimationFrame(frame);
-    }());
+.nav-link {
+    text-decoration: none; color: var(--text-muted); font-size: 0.9rem;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+    padding: 8px 12px; border-radius: 8px; transition: 0.3s;
 }
 
-// Enter key support
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && resultsModal.classList.contains('hidden')) {
-        if(e.ctrlKey || e.metaKey) { // Ctrl+Enter para siguiente
-             handleNext();
-        } else {
-             checkAnswer();
-        }
-    }
-});
+.nav-link:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.nav-link.active {
+    background: var(--accent-gradient);
+    color: #000; text-shadow: none;
+    box-shadow: 0 4px 15px rgba(31, 221, 255, 0.4);
+}
+
+.container {
+    max-width: 900px; margin: 0 auto; padding: 0 20px 40px 20px;
+    display: flex; flex-direction: column; align-items: center;
+}
+
+/* --- Panel de Control --- */
+.control-panel {
+    display: flex; gap: 15px; align-items: center; margin-bottom: 25px; flex-wrap: wrap; justify-content: center;
+    padding: 15px 25px; border-radius: 12px;
+}
+
+.custom-file-upload {
+    font-size: 0.9rem; color: var(--text-color); cursor: pointer;
+    padding: 10px 15px; border-radius: 8px; background: rgba(255,255,255,0.1); transition: 0.3s;
+    display: flex; align-items: center; gap: 8px;
+}
+.custom-file-upload:hover { background: rgba(255,255,255,0.2); }
+
+.github-selector-container { display: flex; align-items: center; gap: 10px; }
+select#github-file-select {
+    background: rgba(0,0,0,0.3); color: white; border: 1px solid var(--glass-border);
+    padding: 10px; border-radius: 8px; outline: none; min-width: 220px; font-size: 0.9rem;
+}
+select#github-file-select option { background: #222; }
+
+/* --- Tarjeta Principal --- */
+.card {
+    border-radius: 20px; padding: 40px; width: 100%; max-width: 600px;
+}
+
+.card-header {
+    margin-bottom: 30px; text-align: center;
+    border-bottom: 1px solid var(--glass-border); padding-bottom: 20px;
+}
+
+.prompt-container {
+    display: flex; align-items: center; justify-content: center; gap: 15px;
+}
+
+#prompt-text {
+    margin: 0; color: #fff; font-weight: 700; font-size: 2rem; letter-spacing: 1px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+/* --- Inputs --- */
+.inputs-container { display: flex; flex-direction: column; gap: 20px; margin-bottom: 35px; }
+.input-group.hidden { display: none; }
+.label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.label-row label, .input-group > label {
+    font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 600;
+}
+
+.input-group input {
+    background-color: var(--input-bg); border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 16px; width: 100%; box-sizing: border-box;
+    border-radius: 10px; color: white; font-size: 1.2rem; transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+.input-group input:focus {
+    outline: none; border-color: var(--color-bg-2); background-color: rgba(0,0,0,0.6);
+    box-shadow: 0 0 15px rgba(31, 221, 255, 0.3);
+}
+
+/* Botones Audio */
+.icon-btn {
+    background: none; border: none; font-size: 1.3rem; cursor: pointer; color: var(--text-muted);
+    transition: 0.3s; padding: 4px; border-radius: 50%;
+}
+.icon-btn:hover { color: white; background: rgba(255,255,255,0.1); transform: scale(1.1); }
+.hidden { display: none !important; }
+
+/* --- Botón Principal (Accent) --- */
+.glass-btn-accent {
+    width: 100%; padding: 18px;
+    background: var(--accent-gradient);
+    border: none; border-radius: 12px; color: black; font-size: 1.2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px;
+    cursor: pointer; transition: 0.2s; box-shadow: 0 5px 20px rgba(255, 78, 80, 0.5);
+}
+.glass-btn-accent:active { transform: scale(0.98); }
+.glass-btn-accent:hover { filter: brightness(1.1); }
+
+/* --- Feedback --- */
+.feedback { margin-bottom: 25px; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 1rem; backdrop-filter: blur(10px); }
+.feedback.success { background: rgba(0, 230, 118, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
+.feedback.error { background: rgba(255, 23, 68, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
+
+/* --- Navegación Inferior CORREGIDA --- */
+.navigation-panel { margin-top: 40px; display: flex; align-items: center; gap: 20px; width: 100%; max-width: 600px; }
+
+.glass-nav-btn {
+    background: rgba(255, 255, 255, 0.08); border: 1px solid var(--glass-border);
+    color: white; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-size: 1rem; font-weight: bold;
+    backdrop-filter: blur(10px); transition: 0.3s; flex-shrink: 0; /* Que no se encojan */
+}
+.glass-nav-btn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.2); }
+.glass-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.nav-boxes { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; flex-grow: 1; }
+
+/* CAJITAS CORREGIDAS */
+.nav-box {
+    width: 38px; height: 38px; /* Más grandes */
+    border-radius: 8px; cursor: pointer;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--glass-border);
+    transition: 0.2s all;
+    /* Centrar el número */
+    display: flex; justify-content: center; align-items: center;
+    font-weight: bold; font-size: 0.9rem; color: var(--text-muted);
+}
+
+.nav-box:hover { background: rgba(255,255,255,0.2); color: white; }
+.nav-box.active { background: white; color: black; border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.5); transform: scale(1.1); }
+/* Colores vibrantes para correcto/incorrecto */
+.nav-box.correct { background: var(--accent-green); color: black; border-color: var(--accent-green); }
+.nav-box.incorrect { background: var(--accent-red); color: white; border-color: var(--accent-red); }
+
+/* --- Modal --- */
+.modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; z-index: 100; backdrop-filter: blur(5px);}
+.modal-content { text-align: center; max-width: 450px; }
+.modal h2 { font-size: 2.5rem; margin-bottom: 10px; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+#score-text { font-size: 1.5rem; margin-bottom: 30px; }
+
+input[type="file"] { display: none; }
