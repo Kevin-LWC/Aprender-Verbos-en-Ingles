@@ -22,6 +22,8 @@ const inputs = {
     base: document.getElementById('input-base'),
     past: document.getElementById('input-past'),
     participle: document.getElementById('input-participle'),
+    sform: document.getElementById('input-sform'),
+    ing: document.getElementById('input-ing'),
     spanish: document.getElementById('input-spanish')
 };
 // Elementos de corrección
@@ -29,6 +31,8 @@ const corrections = {
     base: document.getElementById('correct-base'),
     past: document.getElementById('correct-past'),
     participle: document.getElementById('correct-participle'),
+    sform: document.getElementById('correct-sform'),
+    ing: document.getElementById('correct-ing'),
     spanish: document.getElementById('correct-spanish')
 };
 
@@ -178,6 +182,8 @@ function loadQuestion(index) {
         if (inputs.base) inputs.base.value = savedState.base || "";
         if (inputs.past) inputs.past.value = savedState.past || "";
         if (inputs.participle) inputs.participle.value = savedState.participle || "";
+        if (inputs.sform) inputs.sform.value = savedState.sform || "";
+        if (inputs.ing) inputs.ing.value = savedState.ing || "";
         if (inputs.spanish) inputs.spanish.value = savedState.spanish || "";
 
         // Si ya fue respondida, ejecutar validación visual inmediatamente para mostrar correcciones
@@ -210,6 +216,8 @@ function configureLayout(item) {
         toggleInputVisibility('base', true);
         toggleInputVisibility('past', false);
         toggleInputVisibility('participle', false);
+        toggleInputVisibility('sform', false);
+        toggleInputVisibility('ing', false);
         toggleInputVisibility('spanish', true);
 
         // Ajustar atributos de audio para que lean la propiedad correcta 'verb'
@@ -221,6 +229,8 @@ function configureLayout(item) {
         toggleInputVisibility('base', true);
         toggleInputVisibility('past', true);
         toggleInputVisibility('participle', true);
+        toggleInputVisibility('sform', true);
+        toggleInputVisibility('ing', true);
         toggleInputVisibility('spanish', true);
         
         // Ajustar atributos de audio
@@ -271,6 +281,8 @@ function checkAnswer() {
         base: inputs.base.value,
         past: inputs.past.value,
         participle: inputs.participle.value,
+        sform: inputs.sform.value,
+        ing: inputs.ing.value,
         spanish: inputs.spanish.value
     };
 
@@ -312,8 +324,8 @@ function validateVisuals(item, answers) {
         else fieldsToCheck = ['spanish'];
     } else {
         // Verbos: Base, Past, Participle, Spanish
-        if (answers.mode === 1) fieldsToCheck = ['base', 'past', 'participle'];
-        else fieldsToCheck = ['base', 'past', 'spanish'];
+        if (answers.mode === 1) fieldsToCheck = ['base', 'past', 'participle', 'sform', 'ing'];
+        else fieldsToCheck = ['base', 'past', 'spanish', 'sform', 'ing'];
     }
 
     fieldsToCheck.forEach(field => {
@@ -324,7 +336,12 @@ function validateVisuals(item, answers) {
         
         // Obtener valor correcto del JSON
         // Nota: Si es phrasal mode, el input 'base' se compara con item.verb
-        let correctValKey = (isPhrasalVerbMode && field === 'base') ? 'verb' : field;
+        let correctValKey;
+        if (isPhrasalVerbMode && field === 'base') correctValKey = 'verb';
+        else if (field === 'sform') correctValKey = 'S-ES-IES';
+        else if (field === 'ing') correctValKey = 'ing-form';
+        else correctValKey = field;
+
         const correctVal = (item[correctValKey] || "").toLowerCase();
 
         // Limpiar estado previo
@@ -361,6 +378,10 @@ document.querySelectorAll('.audio-btn').forEach(btn => {
         let key = btn.getAttribute('data-key') || btn.getAttribute('data-form');
         // Parche rápido: si estamos en modo phrasal y piden 'base', es 'verb'
         if (isPhrasalVerbMode && key === 'base') key = 'verb';
+
+        // Mapear keys de UI a claves reales del JSON
+        if (key === 'sform') key = 'S-ES-IES';
+        if (key === 'ing') key = 'ing-form';
 
         const item = verbData[currentIndex];
         if (item && item[key]) {
