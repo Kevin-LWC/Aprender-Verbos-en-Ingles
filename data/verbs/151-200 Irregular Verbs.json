@@ -1,0 +1,452 @@
+[
+  {
+    "id": 151,
+    "base": "spell",
+    "past": "spelt",
+    "participle": "spelt",
+    "S-ES-IES": "spells",
+    "ing-form": "spelling",
+    "spanish": "deletrear"
+  },
+  {
+    "id": 152,
+    "base": "spend",
+    "past": "spent",
+    "participle": "spent",
+    "S-ES-IES": "spends",
+    "ing-form": "spending",
+    "spanish": "gastar"
+  },
+  {
+    "id": 153,
+    "base": "spill",
+    "past": "spilt",
+    "participle": "spilt",
+    "S-ES-IES": "spills",
+    "ing-form": "spilling",
+    "spanish": "derramar"
+  },
+  {
+    "id": 154,
+    "base": "spin",
+    "past": "spun",
+    "participle": "spun",
+    "S-ES-IES": "spins",
+    "ing-form": "spinning",
+    "spanish": "girar"
+  },
+  {
+    "id": 155,
+    "base": "spit",
+    "past": "spat",
+    "participle": "spat",
+    "S-ES-IES": "spits",
+    "ing-form": "spitting",
+    "spanish": "escupir"
+  },
+  {
+    "id": 156,
+    "base": "split",
+    "past": "split",
+    "participle": "split",
+    "S-ES-IES": "splits",
+    "ing-form": "splitting",
+    "spanish": "dividir"
+  },
+  {
+    "id": 157,
+    "base": "spoil",
+    "past": "spoilt",
+    "participle": "spoilt",
+    "S-ES-IES": "spoils",
+    "ing-form": "spoiling",
+    "spanish": "estropear"
+  },
+  {
+    "id": 158,
+    "base": "spread",
+    "past": "spread",
+    "participle": "spread",
+    "S-ES-IES": "spreads",
+    "ing-form": "spreading",
+    "spanish": "extender"
+  },
+  {
+    "id": 159,
+    "base": "spring",
+    "past": "sprang",
+    "participle": "sprung",
+    "S-ES-IES": "springs",
+    "ing-form": "springing",
+    "spanish": "saltar"
+  },
+  {
+    "id": 160,
+    "base": "stand",
+    "past": "stood",
+    "participle": "stood",
+    "S-ES-IES": "stands",
+    "ing-form": "standing",
+    "spanish": "estar de pie"
+  },
+  {
+    "id": 161,
+    "base": "stave",
+    "past": "stove",
+    "participle": "stove",
+    "S-ES-IES": "staves",
+    "ing-form": "staving",
+    "spanish": "romper"
+  },
+  {
+    "id": 162,
+    "base": "steal",
+    "past": "stole",
+    "participle": "stolen",
+    "S-ES-IES": "steals",
+    "ing-form": "stealing",
+    "spanish": "robar"
+  },
+  {
+    "id": 163,
+    "base": "stick",
+    "past": "stuck",
+    "participle": "stuck",
+    "S-ES-IES": "sticks",
+    "ing-form": "sticking",
+    "spanish": "pegar"
+  },
+  {
+    "id": 164,
+    "base": "sting",
+    "past": "stung",
+    "participle": "stung",
+    "S-ES-IES": "stings",
+    "ing-form": "stinging",
+    "spanish": "picar"
+  },
+  {
+    "id": 165,
+    "base": "stink",
+    "past": "stank",
+    "participle": "stunk",
+    "S-ES-IES": "stinks",
+    "ing-form": "stinking",
+    "spanish": "apestar"
+  },
+  {
+    "id": 166,
+    "base": "strew",
+    "past": "strewed",
+    "participle": "strewn",
+    "S-ES-IES": "strews",
+    "ing-form": "strewing",
+    "spanish": "esparcir"
+  },
+  {
+    "id": 167,
+    "base": "stride",
+    "past": "strode",
+    "participle": "stridden",
+    "S-ES-IES": "strides",
+    "ing-form": "striding",
+    "spanish": "caminar con zancadas"
+  },
+  {
+    "id": 168,
+    "base": "strike",
+    "past": "struck",
+    "participle": "stricken",
+    "S-ES-IES": "strikes",
+    "ing-form": "striking",
+    "spanish": "golpear"
+  },
+  {
+    "id": 169,
+    "base": "string",
+    "past": "strung",
+    "participle": "strung",
+    "S-ES-IES": "strings",
+    "ing-form": "stringing",
+    "spanish": "ensartar"
+  },
+  {
+    "id": 170,
+    "base": "strive",
+    "past": "strove",
+    "participle": "striven",
+    "S-ES-IES": "strives",
+    "ing-form": "striving",
+    "spanish": "esforzarse"
+  },
+  {
+    "id": 171,
+    "base": "swear",
+    "past": "swore",
+    "participle": "sworn",
+    "S-ES-IES": "swears",
+    "ing-form": "swearing",
+    "spanish": "jurar"
+  },
+  {
+    "id": 172,
+    "base": "sweat",
+    "past": "sweat",
+    "participle": "sweat",
+    "S-ES-IES": "sweats",
+    "ing-form": "sweating",
+    "spanish": "sudar"
+  },
+  {
+    "id": 173,
+    "base": "sweep",
+    "past": "swept",
+    "participle": "swept",
+    "S-ES-IES": "sweeps",
+    "ing-form": "sweeping",
+    "spanish": "barrer"
+  },
+  {
+    "id": 174,
+    "base": "swell",
+    "past": "swelled",
+    "participle": "swollen",
+    "S-ES-IES": "swells",
+    "ing-form": "swelling",
+    "spanish": "hinchar"
+  },
+  {
+    "id": 175,
+    "base": "swim",
+    "past": "swam",
+    "participle": "swum",
+    "S-ES-IES": "swims",
+    "ing-form": "swimming",
+    "spanish": "nadar"
+  },
+  {
+    "id": 176,
+    "base": "swing",
+    "past": "swung",
+    "participle": "swung",
+    "S-ES-IES": "swings",
+    "ing-form": "swinging",
+    "spanish": "balancearse"
+  },
+  {
+    "id": 177,
+    "base": "take",
+    "past": "took",
+    "participle": "taken",
+    "S-ES-IES": "takes",
+    "ing-form": "taking",
+    "spanish": "tomar"
+  },
+  {
+    "id": 178,
+    "base": "teach",
+    "past": "taught",
+    "participle": "taught",
+    "S-ES-IES": "teaches",
+    "ing-form": "teaching",
+    "spanish": "enseñar"
+  },
+  {
+    "id": 179,
+    "base": "tear",
+    "past": "tore",
+    "participle": "torn",
+    "S-ES-IES": "tears",
+    "ing-form": "tearing",
+    "spanish": "romper"
+  },
+  {
+    "id": 180,
+    "base": "tell",
+    "past": "told",
+    "participle": "told",
+    "S-ES-IES": "tells",
+    "ing-form": "telling",
+    "spanish": "contar"
+  },
+  {
+    "id": 181,
+    "base": "think",
+    "past": "thought",
+    "participle": "thought",
+    "S-ES-IES": "thinks",
+    "ing-form": "thinking",
+    "spanish": "pensar"
+  },
+  {
+    "id": 182,
+    "base": "thrive",
+    "past": "throve",
+    "participle": "thriven",
+    "S-ES-IES": "thrives",
+    "ing-form": "thriving",
+    "spanish": "prosperar"
+  },
+  {
+    "id": 183,
+    "base": "throw",
+    "past": "threw",
+    "participle": "thrown",
+    "S-ES-IES": "throws",
+    "ing-form": "throwing",
+    "spanish": "lanzar"
+  },
+  {
+    "id": 184,
+    "base": "thrust",
+    "past": "thrust",
+    "participle": "thrust",
+    "S-ES-IES": "thrusts",
+    "ing-form": "thrusting",
+    "spanish": "empujar"
+  },
+  {
+    "id": 185,
+    "base": "tread",
+    "past": "trod",
+    "participle": "trodden",
+    "S-ES-IES": "treads",
+    "ing-form": "treading",
+    "spanish": "pisar"
+  },
+  {
+    "id": 186,
+    "base": "understand",
+    "past": "understood",
+    "participle": "understood",
+    "S-ES-IES": "understands",
+    "ing-form": "understanding",
+    "spanish": "entender"
+  },
+  {
+    "id": 187,
+    "base": "wake",
+    "past": "woke",
+    "participle": "woken",
+    "S-ES-IES": "wakes",
+    "ing-form": "waking",
+    "spanish": "despertar"
+  },
+  {
+    "id": 188,
+    "base": "waylay",
+    "past": "waylaid",
+    "participle": "waylaid",
+    "S-ES-IES": "waylays",
+    "ing-form": "waylaying",
+    "spanish": "tender una emboscada"
+  },
+  {
+    "id": 189,
+    "base": "wear",
+    "past": "wore",
+    "participle": "worn",
+    "S-ES-IES": "wears",
+    "ing-form": "wearing",
+    "spanish": "llevar puesto"
+  },
+  {
+    "id": 190,
+    "base": "weave",
+    "past": "wove",
+    "participle": "woven",
+    "S-ES-IES": "weaves",
+    "ing-form": "weaving",
+    "spanish": "tejer"
+  },
+  {
+    "id": 191,
+    "base": "wed",
+    "past": "wed",
+    "participle": "wed",
+    "S-ES-IES": "weds",
+    "ing-form": "wedding",
+    "spanish": "casar"
+  },
+  {
+    "id": 192,
+    "base": "weep",
+    "past": "wept",
+    "participle": "wept",
+    "S-ES-IES": "weeps",
+    "ing-form": "weeping",
+    "spanish": "llorar"
+  },
+  {
+    "id": 193,
+    "base": "welcome",
+    "past": "welcomed",
+    "participle": "welcomed",
+    "S-ES-IES": "welcomes",
+    "ing-form": "welcoming",
+    "spanish": "dar la bienvenida"
+  },
+  {
+    "id": 194,
+    "base": "wend",
+    "past": "went",
+    "participle": "went",
+    "S-ES-IES": "wends",
+    "ing-form": "wending",
+    "spanish": "dirigirse"
+  },
+  {
+    "id": 195,
+    "base": "wet",
+    "past": "wet",
+    "participle": "wet",
+    "S-ES-IES": "wets",
+    "ing-form": "wetting",
+    "spanish": "mojar"
+  },
+  {
+    "id": 196,
+    "base": "win",
+    "past": "won",
+    "participle": "won",
+    "S-ES-IES": "wins",
+    "ing-form": "winning",
+    "spanish": "ganar"
+  },
+  {
+    "id": 197,
+    "base": "wind",
+    "past": "wound",
+    "participle": "wound",
+    "S-ES-IES": "winds",
+    "ing-form": "winding",
+    "spanish": "enrollar"
+  },
+  {
+    "id": 198,
+    "base": "withdraw",
+    "past": "withdrew",
+    "participle": "withdrawn",
+    "S-ES-IES": "withdraws",
+    "ing-form": "withdrawing",
+    "spanish": "retirar"
+  },
+  {
+    "id": 199,
+    "base": "wring",
+    "past": "wrung",
+    "participle": "wrung",
+    "S-ES-IES": "wrings",
+    "ing-form": "wringing",
+    "spanish": "retorcer"
+  },
+  {
+    "id": 200,
+    "base": "write",
+    "past": "wrote",
+    "participle": "written",
+    "S-ES-IES": "writes",
+    "ing-form": "writing",
+    "spanish": "escribir"
+  }
+]
