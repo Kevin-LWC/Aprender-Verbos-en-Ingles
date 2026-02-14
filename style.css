@@ -117,6 +117,11 @@ select#github-file-select {
 }
 select#github-file-select option { background: #222; }
 
+/* Allow selector to shrink inside flex containers on small screens */
+.github-selector-container { min-width: 0; flex: 1 1 auto; }
+select#github-file-select { width: 100%; max-width: 100%; box-sizing: border-box; }
+.custom-file-upload { flex: 0 0 auto; }
+
 /* --- Tarjeta Principal --- */
 .card {
     border-radius: 20px; padding: 40px; width: 100%; max-width: 600px;
@@ -161,7 +166,68 @@ select#github-file-select option { background: #222; }
     transition: 0.3s; padding: 4px; border-radius: 50%;
 }
 .icon-btn:hover { color: white; background: rgba(255,255,255,0.1); transform: scale(1.1); }
+
 .hidden { display: none !important; }
+
+/* ------------------ Responsive: Tablet & Mobile ------------------ */
+@media (max-width: 1024px) {
+    .container { max-width: 720px; padding: 0 16px 30px; }
+    .card { padding: 30px; max-width: 100%; }
+    #prompt-text { font-size: 1.6rem; }
+    .nav-box { width: 34px; height: 34px; font-size: 0.85rem; }
+    select#github-file-select { min-width: 180px; }
+    .top-nav { gap: 10px; padding: 12px; }
+    .control-panel { padding: 12px 16px; gap: 10px; }
+    .glass-btn-accent { padding: 14px; font-size: 1.1rem; }
+    .inputs-container { gap: 16px; }
+    .input-group input { padding: 14px; font-size: 1.1rem; }
+    .modal h2 { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+    .container { max-width: 100%; padding: 0 12px 24px; }
+    .card { padding: 20px; border-radius: 14px; }
+    #prompt-text { font-size: 1.4rem; }
+    .prompt-container { flex-direction: column; gap: 8px; align-items: center; }
+    .top-nav { justify-content: space-between; gap: 8px; padding: 10px; }
+    .nav-link { padding: 6px 8px; font-size: 0.8rem; }
+    .control-panel { flex-direction: column; align-items: stretch; gap: 10px; padding: 10px; }
+    .github-selector-container, select#github-file-select { width: 100%; min-width: 0; }
+    .custom-file-upload { width: 100%; justify-content: center; }
+    .inputs-container { gap: 12px; }
+    .input-group input { padding: 12px; font-size: 1rem; }
+    .glass-btn-accent { padding: 12px; font-size: 1rem; }
+    .navigation-panel { flex-direction: column; gap: 12px; align-items: stretch; max-width: 100%; }
+    .nav-boxes { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; }
+    .nav-box { width: 34px; height: 34px; flex: 0 0 auto; }
+    .modal-content { margin: 0 12px; width: calc(100% - 24px); }
+    .bg-gradient { background-size: cover; background-position: center; }
+    .icon-btn { padding: 8px; font-size: 1.2rem; }
+}
+
+/* Hamburger / Mobile menu styles */
+.hamburger {
+    display: none; /* visible only on small screens */
+    background: none; border: none; color: var(--text-muted); font-size: 1.4rem; cursor: pointer;
+    padding: 8px 10px; margin-right: 8px;
+}
+.mobile-menu {
+    position: fixed; top: 56px; right: 12px; background: rgba(20,20,20,0.95); border: 1px solid var(--glass-border);
+    border-radius: 10px; padding: 10px; z-index: 200; width: 220px; box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+    display: flex; flex-direction: column; gap: 8px;
+}
+.mobile-menu a { color: var(--text-muted); text-decoration: none; padding: 8px; border-radius: 8px; }
+.mobile-menu a:hover { background: rgba(255,255,255,0.05); color: white; }
+.mobile-menu.hidden { display: none; }
+
+@media (max-width: 800px) {
+    .hamburger { display: inline-flex; }
+    .top-nav .nav-link { display: none; }
+}
+
+@media (min-width: 801px) {
+    .mobile-menu { display: none !important; }
+}
 
 /* --- Botón Principal (Accent) --- */
 .glass-btn-accent {
