@@ -8,19 +8,30 @@ const GITHUB_CONFIG = {
 let verbData = [];
 let currentIndex = 0;
 let score = 0;
-let questionStatus = []; 
-let currentMode = 1; 
+let questionStatus = []; // true (correcto), false (incorrecto), null (sin responder)
+let userAnswers = [];    // Almacena lo que escribió el usuario {base: "...", past: "..."}
+let currentMode = 1;     // 1: Mostrar Español, 2: Mostrar Inglés
 let currentPromptText = "";
+let isPhrasalVerbMode = false; // Bandera para saber tipo de juego
 
 // Elementos del DOM
 const promptText = document.getElementById('prompt-text');
 const promptAudioBtn = document.getElementById('prompt-audio-btn');
+const labelBase = document.getElementById('label-base');
 const inputs = {
     base: document.getElementById('input-base'),
     past: document.getElementById('input-past'),
     participle: document.getElementById('input-participle'),
     spanish: document.getElementById('input-spanish')
 };
+// Elementos de corrección
+const corrections = {
+    base: document.getElementById('correct-base'),
+    past: document.getElementById('correct-past'),
+    participle: document.getElementById('correct-participle'),
+    spanish: document.getElementById('correct-spanish')
+};
+
 const feedbackMessage = document.getElementById('feedback-message');
 const navBoxesContainer = document.getElementById('nav-boxes-container');
 const resultsModal = document.getElementById('results-modal');
@@ -28,10 +39,11 @@ const scoreText = document.getElementById('score-text');
 const githubFileSelect = document.getElementById('github-file-select');
 const navLinks = document.querySelectorAll('.nav-link');
 const loadingIndicator = document.getElementById('loading-indicator');
+const checkBtn = document.getElementById('check-btn');
 
 // --- Inicialización ---
 window.addEventListener('DOMContentLoaded', () => {
-    loadCategory('verbs'); // Cargar categoría por defecto
+    loadCategory('verbs'); 
 });
 
 // --- Lógica de GitHub ---
@@ -48,7 +60,7 @@ async function loadCategory(folderName) {
     loadingIndicator.classList.remove('hidden');
     githubFileSelect.innerHTML = '<option>Cargando archivos...</option>';
     githubFileSelect.disabled = true;
-    promptText.textContent = "Conectando a GitHub...";
+    promptText.textContent = "Conectando...";
 
     const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.username}/${GITHUB_CONFIG.repo}/contents/${GITHUB_CONFIG.folder}/${folderName}`;
 
@@ -58,18 +70,15 @@ async function loadCategory(folderName) {
         const files = await response.json();
         const jsonFiles = files.filter(file => file.name.endsWith('.json'));
 
-        if (jsonFiles.length === 0) throw new Error("No se encontraron archivos JSON en esta carpeta.");
+        if (jsonFiles.length === 0) throw new Error("No hay JSON aquí.");
 
         populateFileSelect(jsonFiles);
-        loadRemoteJson(jsonFiles[0].download_url); // Cargar el primero
+        loadRemoteJson(jsonFiles[0].download_url);
 
     } catch (error) {
         console.error(error);
-        githubFileSelect.innerHTML = '<option>Error al cargar lista</option>';
+        githubFileSelect.innerHTML = '<option>Error</option>';
         promptText.textContent = "Error de conexión 😕";
-        feedbackMessage.textContent = `Detalles: ${error.message}. Verifica tu conexión o el límite de la API.`;
-        feedbackMessage.className = 'feedback error';
-        feedbackMessage.classList.remove('hidden');
     } finally {
         loadingIndicator.classList.add('hidden');
     }
@@ -80,7 +89,6 @@ function populateFileSelect(files) {
     files.forEach(file => {
         const option = document.createElement('option');
         option.value = file.download_url;
-        // Formatear nombre: quitar .json y reemplazar guiones bajos por espacios
         option.textContent = file.name.replace('.json', '').replace(/_/g, ' ').toUpperCase(); 
         githubFileSelect.appendChild(option);
     });
@@ -93,19 +101,18 @@ githubFileSelect.addEventListener('change', (e) => {
 
 async function loadRemoteJson(url) {
     try {
-        promptText.textContent = "Descargando datos...";
+        promptText.textContent = "Cargando...";
         resetUI();
         const response = await fetch(url);
-        if (!response.ok) throw new Error("Error al descargar el archivo JSON");
+        if (!response.ok) throw new Error("Error de descarga");
         const data = await response.json();
         initGame(data);
     } catch (error) {
-        promptText.textContent = "Error al cargar JSON";
+        promptText.textContent = "Error JSON";
         console.error(error);
     }
 }
 
-// --- Carga Manual ---
 document.getElementById('jsonUpload').addEventListener('change', (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -115,9 +122,8 @@ document.getElementById('jsonUpload').addEventListener('change', (event) => {
             const data = JSON.parse(e.target.result);
             initGame(data);
             githubFileSelect.value = "";
-            navLinks.forEach(l => l.classList.remove('active')); // Desactivar nav superior si es manual
         } catch (error) {
-            alert("Error al leer el archivo JSON. Asegúrate de que el formato sea correcto.");
+            alert("JSON inválido");
         }
     };
     reader.readAsText(file);
@@ -125,53 +131,224 @@ document.getElementById('jsonUpload').addEventListener('change', (event) => {
 
 // --- Lógica del Juego ---
 function initGame(data) {
-    if (!data || data.length === 0) {
-         promptText.textContent = "El archivo JSON está vacío.";
-         return;
-    }
+    if (!data || data.length === 0) return;
+    
     verbData = data;
+    // Detectar si es Phrasal Verb (si tiene propiedad 'verb' y no 'base')
+    // Asumimos estructura Phrasal: { verb: "give up", spanish: "rendirse" }
+    // Asumimos estructura Verbo: { base: "go", past: "went", participle: "gone", spanish: "ir" }
+    isPhrasalVerbMode = (verbData[0].hasOwnProperty('verb') && !verbData[0].hasOwnProperty('base'));
+
     currentIndex = 0;
     score = 0;
     questionStatus = new Array(verbData.length).fill(null);
+    userAnswers = new Array(verbData.length).fill(null); // Reiniciar historial
+    
     resultsModal.classList.add('hidden');
     renderNavBoxes();
     loadQuestion(currentIndex);
 }
 
 function loadQuestion(index) {
-    const verb = verbData[index];
-    if (!verb) return;
+    const item = verbData[index];
+    if (!item) return;
+
+    // Limpiar UI visualmente (bordes, colores)
     resetUI();
+
+    // 1. Configurar layout según modo (Verbo vs Phrasal)
+    configureLayout(item);
+
+    // 2. Determinar dirección de pregunta (Español->Ingles o Viceversa)
+    // Si ya respondimos, mantenemos el modo guardado, sino aleatorio
+    let savedState = userAnswers[index];
     
-    // Modo aleatorio (1: Español -> Inglés, 2: Participio -> Resto)
-    currentMode = Math.random() < 0.5 ? 1 : 2;
-
-    if (currentMode === 1) {
-        promptText.textContent = capitalize(verb.spanish);
-        currentPromptText = ""; 
-        promptAudioBtn.classList.add('hidden');
-
-        toggleInputVisibility('base', true);
-        toggleInputVisibility('past', true);
-        toggleInputVisibility('participle', true);
-        toggleInputVisibility('spanish', false);
-        setTimeout(() => inputs.base.focus(), 100); // Foco automático
+    if (savedState) {
+        currentMode = savedState.mode;
     } else {
-        promptText.textContent = capitalize(verb.participle);
-        currentPromptText = verb.participle;
-        promptAudioBtn.classList.remove('hidden');
-
-        toggleInputVisibility('base', true);
-        toggleInputVisibility('past', true);
-        toggleInputVisibility('spanish', true);
-        toggleInputVisibility('participle', false);
-        inputs.participle.value = verb.participle;
-        setTimeout(() => inputs.base.focus(), 100); // Foco automático
+        currentMode = Math.random() < 0.5 ? 1 : 2; 
     }
+
+    // 3. Mostrar Prompt
+    setupPrompt(item, currentMode);
+
+    // 4. Restaurar respuestas si existen (Historial)
+    if (savedState) {
+        // Rellenar inputs con lo que escribió el usuario
+        if (inputs.base) inputs.base.value = savedState.base || "";
+        if (inputs.past) inputs.past.value = savedState.past || "";
+        if (inputs.participle) inputs.participle.value = savedState.participle || "";
+        if (inputs.spanish) inputs.spanish.value = savedState.spanish || "";
+
+        // Si ya fue respondida, ejecutar validación visual inmediatamente para mostrar correcciones
+        validateVisuals(item, savedState);
+        checkBtn.disabled = true; // No dejar cambiar si ya respondió
+    } else {
+        // Pregunta nueva
+        checkBtn.disabled = false;
+        // Auto-foco
+        setTimeout(() => {
+             // Enfocar el primer input visible
+             if (!inputs.base.parentElement.classList.contains('hidden')) inputs.base.focus();
+             else if (!inputs.participle.parentElement.classList.contains('hidden')) inputs.participle.focus();
+             else inputs.spanish.focus();
+        }, 100);
+    }
+
     updateNavigationState();
 }
 
-// --- Audio ---
+function configureLayout(item) {
+    // Ocultar correcciones previas
+    Object.values(corrections).forEach(el => el.classList.add('hidden'));
+
+    if (isPhrasalVerbMode) {
+        // MODO PHRASAL: Usamos 'base' para el phrasal verb, ocultamos past/participle
+        labelBase.textContent = "Phrasal Verb";
+        
+        // Mapeo: Base -> Visible (Phrasal), Past -> Hidden, Part -> Hidden, Spanish -> Visible
+        toggleInputVisibility('base', true);
+        toggleInputVisibility('past', false);
+        toggleInputVisibility('participle', false);
+        toggleInputVisibility('spanish', true);
+
+        // Ajustar atributos de audio para que lean la propiedad correcta 'verb'
+        document.querySelector('.audio-btn[data-form="base"]').setAttribute('data-key', 'verb');
+
+    } else {
+        // MODO VERBO REGULAR
+        labelBase.textContent = "Base Form";
+        toggleInputVisibility('base', true);
+        toggleInputVisibility('past', true);
+        toggleInputVisibility('participle', true);
+        toggleInputVisibility('spanish', true);
+        
+        // Ajustar atributos de audio
+        document.querySelector('.audio-btn[data-form="base"]').setAttribute('data-key', 'base');
+    }
+}
+
+function setupPrompt(item, mode) {
+    // Definir qué palabra se muestra arriba
+    let promptWord = "";
+    
+    // Modo 1: Español -> Inglés
+    if (mode === 1) {
+        promptWord = item.spanish;
+        currentPromptText = ""; // No audio para español arriba
+        promptAudioBtn.classList.add('hidden');
+        
+        toggleInputVisibility('spanish', false); // Ocultar input español pues es la pregunta
+    } 
+    // Modo 2: Inglés -> Resto
+    else {
+        if (isPhrasalVerbMode) {
+            promptWord = item.verb;
+            currentPromptText = item.verb;
+            toggleInputVisibility('base', false); // Ocultar input phrasal
+        } else {
+            promptWord = item.participle; // Preguntar por participio
+            currentPromptText = item.participle;
+            toggleInputVisibility('participle', false);
+        }
+        promptAudioBtn.classList.remove('hidden');
+    }
+
+    promptText.textContent = capitalize(promptWord);
+}
+
+// --- Validación ---
+checkBtn.addEventListener('click', checkAnswer);
+
+function checkAnswer() {
+    if (checkBtn.disabled) return; // Evitar doble check
+
+    const item = verbData[currentIndex];
+    
+    // Recolectar respuestas del usuario
+    const currentAnswers = {
+        mode: currentMode,
+        base: inputs.base.value,
+        past: inputs.past.value,
+        participle: inputs.participle.value,
+        spanish: inputs.spanish.value
+    };
+
+    // Guardar en historial
+    userAnswers[currentIndex] = currentAnswers;
+
+    // Ejecutar validación visual y lógica
+    const isCorrect = validateVisuals(item, currentAnswers);
+
+    if (isCorrect) {
+        showFeedback("✅ ¡Correcto!", "success");
+        triggerConfetti();
+        score++;
+        questionStatus[currentIndex] = true;
+    } else {
+        showFeedback("❌ Revisa las correcciones.", "error");
+        questionStatus[currentIndex] = false;
+    }
+    
+    checkBtn.disabled = true; // Bloquear botón tras responder
+    renderNavBoxes();
+}
+
+/**
+ * Compara respuestas con datos reales y actualiza UI (colores y textos de corrección).
+ * Retorna true si todo es correcto.
+ */
+function validateVisuals(item, answers) {
+    let allCorrect = true;
+    
+    // Determinar qué campos debemos validar según el modo actual
+    let fieldsToCheck = [];
+
+    if (isPhrasalVerbMode) {
+        // Phrasal: 'base' (input donde va el verbo) y 'spanish'
+        // Si el prompt es español (modo 1), validamos 'base' (phrasal)
+        // Si el prompt es inglés (modo 2), validamos 'spanish'
+        if (answers.mode === 1) fieldsToCheck = ['base']; 
+        else fieldsToCheck = ['spanish'];
+    } else {
+        // Verbos: Base, Past, Participle, Spanish
+        if (answers.mode === 1) fieldsToCheck = ['base', 'past', 'participle'];
+        else fieldsToCheck = ['base', 'past', 'spanish'];
+    }
+
+    fieldsToCheck.forEach(field => {
+        const inputElem = inputs[field];
+        const correctElem = corrections[field];
+        
+        const userVal = (answers[field] || "").trim().toLowerCase();
+        
+        // Obtener valor correcto del JSON
+        // Nota: Si es phrasal mode, el input 'base' se compara con item.verb
+        let correctValKey = (isPhrasalVerbMode && field === 'base') ? 'verb' : field;
+        const correctVal = (item[correctValKey] || "").toLowerCase();
+
+        // Limpiar estado previo
+        correctElem.classList.add('hidden');
+        inputElem.classList.remove('shake');
+
+        if (userVal !== correctVal) {
+            allCorrect = false;
+            inputElem.style.borderColor = 'var(--accent-red)';
+            inputElem.style.backgroundColor = 'rgba(255, 23, 68, 0.1)';
+            
+            // MOSTRAR CORRECCIÓN
+            correctElem.textContent = `Correcto: ${correctVal}`;
+            correctElem.classList.remove('hidden');
+        } else {
+            inputElem.style.borderColor = 'var(--accent-green)';
+            inputElem.style.backgroundColor = 'rgba(0, 230, 118, 0.1)';
+        }
+    });
+
+    return allCorrect;
+}
+
+// --- Audio System ---
 promptAudioBtn.addEventListener('click', () => {
     if (currentPromptText) playIndividualAudio(currentPromptText);
 });
@@ -179,11 +356,15 @@ promptAudioBtn.addEventListener('click', () => {
 document.querySelectorAll('.audio-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
         e.preventDefault();
-        btn.blur(); // Quitar foco del botón después de click
-        const formType = btn.getAttribute('data-form');
-        const verb = verbData[currentIndex];
-        if (verb && verb[formType]) {
-            playIndividualAudio(verb[formType]);
+        btn.blur();
+        // Obtener la key correcta (base, past, participle O verb)
+        let key = btn.getAttribute('data-key') || btn.getAttribute('data-form');
+        // Parche rápido: si estamos en modo phrasal y piden 'base', es 'verb'
+        if (isPhrasalVerbMode && key === 'base') key = 'verb';
+
+        const item = verbData[currentIndex];
+        if (item && item[key]) {
+            playIndividualAudio(item[key]);
         }
     });
 });
@@ -194,50 +375,12 @@ function playIndividualAudio(text) {
     utterance.lang = 'en-US'; 
     utterance.rate = 0.9; 
     const voices = window.speechSynthesis.getVoices();
-    // Intentar usar una voz de Google si está disponible
     const preferredVoice = voices.find(v => v.name.includes("Google US English")) || voices.find(v => v.lang === 'en-US');
     if (preferredVoice) utterance.voice = preferredVoice;
     window.speechSynthesis.speak(utterance);
 }
 
-// --- Validación ---
-document.getElementById('check-btn').addEventListener('click', checkAnswer);
-
-function checkAnswer() {
-    const verb = verbData[currentIndex];
-    let isCorrect = true;
-    let inputsToCheck = currentMode === 1 ? ['base', 'past', 'participle'] : ['base', 'past', 'spanish'];
-
-    inputsToCheck.forEach(type => {
-        const inputElem = inputs[type];
-        const userAnswer = inputElem.value.trim().toLowerCase();
-        // Asegurar que la data existe antes de lowercase
-        const correctAnswer = (verb[type] || "").toLowerCase(); 
-        
-        if (userAnswer !== correctAnswer || userAnswer === "") {
-            isCorrect = false;
-            inputElem.style.borderColor = 'var(--accent-red)';
-            inputElem.style.backgroundColor = 'rgba(255, 23, 68, 0.1)';
-            inputElem.classList.add('shake'); // Añadir efecto de vibración si quieres en CSS
-        } else {
-            inputElem.style.borderColor = 'var(--accent-green)';
-            inputElem.style.backgroundColor = 'rgba(0, 230, 118, 0.1)';
-        }
-    });
-
-    if (isCorrect) {
-        showFeedback("✅ ¡Respuesta Correcta!", "success");
-        triggerConfetti();
-        if (questionStatus[currentIndex] === null) score++;
-        questionStatus[currentIndex] = true;
-    } else {
-        showFeedback("❌ Revisa los campos en rojo.", "error");
-        questionStatus[currentIndex] = false;
-    }
-    
-    renderNavBoxes();
-}
-
+// --- UI Helpers ---
 function resetUI() {
     feedbackMessage.classList.add('hidden');
     Object.values(inputs).forEach(input => {
@@ -245,16 +388,19 @@ function resetUI() {
         input.style.borderColor = 'var(--glass-border)';
         input.style.backgroundColor = 'var(--input-bg)';
     });
+    Object.values(corrections).forEach(c => c.classList.add('hidden'));
 }
 
 function toggleInputVisibility(type, show) {
     const group = inputs[type].parentElement;
-    show ? group.classList.remove('hidden') : group.classList.add('hidden');
+    if (show) group.classList.remove('hidden');
+    else group.classList.add('hidden');
 }
 
 function showFeedback(message, type) {
     feedbackMessage.textContent = message;
     feedbackMessage.className = `feedback ${type}`;
+    feedbackMessage.classList.remove('hidden');
 }
 
 function capitalize(str) { return str ? str.charAt(0).toUpperCase() + str.slice(1) : ""; }
@@ -265,7 +411,6 @@ function renderNavBoxes() {
     verbData.forEach((_, index) => {
         const box = document.createElement('div');
         box.classList.add('nav-box');
-        // --- CORRECCIÓN AQUÍ: Añadir el número ---
         box.textContent = index + 1; 
         
         if (index === currentIndex) box.classList.add('active');
@@ -288,7 +433,13 @@ function updateNavigationState() {
     nextBtn.textContent = (currentIndex === verbData.length - 1) ? "Ver Resultados ✨" : "Siguiente →";
 }
 
-prevBtn.addEventListener('click', () => { if(currentIndex > 0) { currentIndex--; loadQuestion(currentIndex); }});
+prevBtn.addEventListener('click', () => { 
+    if(currentIndex > 0) { 
+        currentIndex--; 
+        loadQuestion(currentIndex); 
+    }
+});
+
 nextBtn.addEventListener('click', handleNext);
 
 function handleNext() {
@@ -309,11 +460,10 @@ function showResults() {
 
 document.getElementById('restart-btn').addEventListener('click', () => { initGame(verbData); });
 
-// Confetti pequeño para aciertos
+// Confetti
 function triggerConfetti() { 
     confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 }, colors: ['#00e676', '#1fddff'] }); 
 }
-// Confetti grande para el final
 function triggerConfettiBig() {
     var end = Date.now() + (2 * 1000);
     (function frame() {
@@ -323,13 +473,10 @@ function triggerConfettiBig() {
     }());
 }
 
-// Enter key support
+// Teclado
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Enter' && resultsModal.classList.contains('hidden')) {
-        if(e.ctrlKey || e.metaKey) { // Ctrl+Enter para siguiente
-             handleNext();
-        } else {
-             checkAnswer();
-        }
+        if(e.ctrlKey || e.metaKey) handleNext();
+        else checkAnswer();
     }
 });
