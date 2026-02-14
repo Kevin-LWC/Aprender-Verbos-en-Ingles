@@ -1,0 +1,452 @@
+[
+  {
+    "id": 1,
+    "base": "abide",
+    "past": "abode",
+    "participle": "abode",
+    "S-ES-IES": "abides",
+    "ing-form": "abiding",
+    "spanish": "permanecer"
+  },
+  {
+    "id": 2,
+    "base": "alight",
+    "past": "alit",
+    "participle": "alit",
+    "S-ES-IES": "alights",
+    "ing-form": "alighting",
+    "spanish": "descender"
+  },
+  {
+    "id": 3,
+    "base": "arise",
+    "past": "arose",
+    "participle": "arisen",
+    "S-ES-IES": "arises",
+    "ing-form": "arising",
+    "spanish": "surgir"
+  },
+  {
+    "id": 4,
+    "base": "awake",
+    "past": "awoke",
+    "participle": "awoken",
+    "S-ES-IES": "awakes",
+    "ing-form": "awaking",
+    "spanish": "despertar"
+  },
+  {
+    "id": 5,
+    "base": "be",
+    "past": "was/were",
+    "participle": "been",
+    "S-ES-IES": "is",
+    "ing-form": "being",
+    "spanish": "ser/estar"
+  },
+  {
+    "id": 6,
+    "base": "bear",
+    "past": "bore",
+    "participle": "born",
+    "S-ES-IES": "bears",
+    "ing-form": "bearing",
+    "spanish": "soportar"
+  },
+  {
+    "id": 7,
+    "base": "bear",
+    "past": "bore",
+    "participle": "borne",
+    "S-ES-IES": "bears",
+    "ing-form": "bearing",
+    "spanish": "llevar (cargar)"
+  },
+  {
+    "id": 8,
+    "base": "beat",
+    "past": "beat",
+    "participle": "beaten",
+    "S-ES-IES": "beats",
+    "ing-form": "beating",
+    "spanish": "golpear"
+  },
+  {
+    "id": 9,
+    "base": "become",
+    "past": "became",
+    "participle": "become",
+    "S-ES-IES": "becomes",
+    "ing-form": "becoming",
+    "spanish": "convertirse"
+  },
+  {
+    "id": 10,
+    "base": "befall",
+    "past": "befell",
+    "participle": "befallen",
+    "S-ES-IES": "befalls",
+    "ing-form": "befalling",
+    "spanish": "suceder"
+  },
+  {
+    "id": 11,
+    "base": "begin",
+    "past": "began",
+    "participle": "begun",
+    "S-ES-IES": "begins",
+    "ing-form": "beginning",
+    "spanish": "comenzar"
+  },
+  {
+    "id": 12,
+    "base": "behold",
+    "past": "beheld",
+    "participle": "beheld",
+    "S-ES-IES": "beholds",
+    "ing-form": "beholding",
+    "spanish": "contemplar"
+  },
+  {
+    "id": 13,
+    "base": "bend",
+    "past": "bent",
+    "participle": "bent",
+    "S-ES-IES": "bends",
+    "ing-form": "bending",
+    "spanish": "doblar"
+  },
+  {
+    "id": 14,
+    "base": "bereave",
+    "past": "bereft",
+    "participle": "bereft",
+    "S-ES-IES": "bereaves",
+    "ing-form": "bereaving",
+    "spanish": "despojar"
+  },
+  {
+    "id": 15,
+    "base": "beseech",
+    "past": "besought",
+    "participle": "besought",
+    "S-ES-IES": "beseeches",
+    "ing-form": "beseeching",
+    "spanish": "suplicar"
+  },
+  {
+    "id": 16,
+    "base": "bet",
+    "past": "bet",
+    "participle": "bet",
+    "S-ES-IES": "bets",
+    "ing-form": "betting",
+    "spanish": "apostar"
+  },
+  {
+    "id": 17,
+    "base": "bid",
+    "past": "bade",
+    "participle": "bidden",
+    "S-ES-IES": "bids",
+    "ing-form": "bidding",
+    "spanish": "ofrecer"
+  },
+  {
+    "id": 18,
+    "base": "bid",
+    "past": "bid",
+    "participle": "bid",
+    "S-ES-IES": "bids",
+    "ing-form": "bidding",
+    "spanish": "pujar"
+  },
+  {
+    "id": 19,
+    "base": "bind",
+    "past": "bound",
+    "participle": "bound",
+    "S-ES-IES": "binds",
+    "ing-form": "binding",
+    "spanish": "atar"
+  },
+  {
+    "id": 20,
+    "base": "bite",
+    "past": "bit",
+    "participle": "bitten",
+    "S-ES-IES": "bites",
+    "ing-form": "biting",
+    "spanish": "morder"
+  },
+  {
+    "id": 21,
+    "base": "bleed",
+    "past": "bled",
+    "participle": "bled",
+    "S-ES-IES": "bleeds",
+    "ing-form": "bleeding",
+    "spanish": "sangrar"
+  },
+  {
+    "id": 22,
+    "base": "blow",
+    "past": "blew",
+    "participle": "blown",
+    "S-ES-IES": "blows",
+    "ing-form": "blowing",
+    "spanish": "soplar"
+  },
+  {
+    "id": 23,
+    "base": "break",
+    "past": "broke",
+    "participle": "broken",
+    "S-ES-IES": "breaks",
+    "ing-form": "breaking",
+    "spanish": "romper"
+  },
+  {
+    "id": 24,
+    "base": "breed",
+    "past": "bred",
+    "participle": "bred",
+    "S-ES-IES": "breeds",
+    "ing-form": "breeding",
+    "spanish": "criar"
+  },
+  {
+    "id": 25,
+    "base": "bring",
+    "past": "brought",
+    "participle": "brought",
+    "S-ES-IES": "brings",
+    "ing-form": "bringing",
+    "spanish": "traer"
+  },
+  {
+    "id": 26,
+    "base": "broadcast",
+    "past": "broadcast",
+    "participle": "broadcast",
+    "S-ES-IES": "broadcasts",
+    "ing-form": "broadcasting",
+    "spanish": "transmitir"
+  },
+  {
+    "id": 27,
+    "base": "build",
+    "past": "built",
+    "participle": "built",
+    "S-ES-IES": "builds",
+    "ing-form": "building",
+    "spanish": "construir"
+  },
+  {
+    "id": 28,
+    "base": "burn",
+    "past": "burnt",
+    "participle": "burnt",
+    "S-ES-IES": "burns",
+    "ing-form": "burning",
+    "spanish": "quemar"
+  },
+  {
+    "id": 29,
+    "base": "burst",
+    "past": "burst",
+    "participle": "burst",
+    "S-ES-IES": "bursts",
+    "ing-form": "bursting",
+    "spanish": "reventar"
+  },
+  {
+    "id": 30,
+    "base": "bust",
+    "past": "bust",
+    "participle": "bust",
+    "S-ES-IES": "busts",
+    "ing-form": "busting",
+    "spanish": "reventar"
+  },
+  {
+    "id": 31,
+    "base": "buy",
+    "past": "bought",
+    "participle": "bought",
+    "S-ES-IES": "buys",
+    "ing-form": "buying",
+    "spanish": "comprar"
+  },
+  {
+    "id": 32,
+    "base": "cast",
+    "past": "cast",
+    "participle": "cast",
+    "S-ES-IES": "casts",
+    "ing-form": "casting",
+    "spanish": "lanzar"
+  },
+  {
+    "id": 33,
+    "base": "catch",
+    "past": "caught",
+    "participle": "caught",
+    "S-ES-IES": "catches",
+    "ing-form": "catching",
+    "spanish": "atrapar"
+  },
+  {
+    "id": 34,
+    "base": "chide",
+    "past": "chid",
+    "participle": "chidden",
+    "S-ES-IES": "chides",
+    "ing-form": "chiding",
+    "spanish": "regañar"
+  },
+  {
+    "id": 35,
+    "base": "choose",
+    "past": "chose",
+    "participle": "chosen",
+    "S-ES-IES": "chooses",
+    "ing-form": "choosing",
+    "spanish": "elegir"
+  },
+  {
+    "id": 36,
+    "base": "cleave",
+    "past": "clove/cleft",
+    "participle": "cloven/cleft",
+    "S-ES-IES": "cleaves",
+    "ing-form": "cleaving",
+    "spanish": "hender"
+  },
+  {
+    "id": 37,
+    "base": "cling",
+    "past": "clung",
+    "participle": "clung",
+    "S-ES-IES": "clings",
+    "ing-form": "clinging",
+    "spanish": "aferrarse"
+  },
+  {
+    "id": 38,
+    "base": "clothe",
+    "past": "clad",
+    "participle": "clad",
+    "S-ES-IES": "clothes",
+    "ing-form": "clothing",
+    "spanish": "vestir"
+  },
+  {
+    "id": 39,
+    "base": "come",
+    "past": "came",
+    "participle": "come",
+    "S-ES-IES": "comes",
+    "ing-form": "coming",
+    "spanish": "venir"
+  },
+  {
+    "id": 40,
+    "base": "cost",
+    "past": "cost",
+    "participle": "cost",
+    "S-ES-IES": "costs",
+    "ing-form": "costing",
+    "spanish": "costar"
+  },
+  {
+    "id": 41,
+    "base": "creep",
+    "past": "crept",
+    "participle": "crept",
+    "S-ES-IES": "creeps",
+    "ing-form": "creeping",
+    "spanish": "arrastrarse"
+  },
+  {
+    "id": 42,
+    "base": "cut",
+    "past": "cut",
+    "participle": "cut",
+    "S-ES-IES": "cuts",
+    "ing-form": "cutting",
+    "spanish": "cortar"
+  },
+  {
+    "id": 43,
+    "base": "deal",
+    "past": "dealt",
+    "participle": "dealt",
+    "S-ES-IES": "deals",
+    "ing-form": "dealing",
+    "spanish": "repartir"
+  },
+  {
+    "id": 44,
+    "base": "dig",
+    "past": "dug",
+    "participle": "dug",
+    "S-ES-IES": "digs",
+    "ing-form": "digging",
+    "spanish": "cavar"
+  },
+  {
+    "id": 45,
+    "base": "do",
+    "past": "did",
+    "participle": "done",
+    "S-ES-IES": "does",
+    "ing-form": "doing",
+    "spanish": "hacer"
+  },
+  {
+    "id": 46,
+    "base": "draw",
+    "past": "drew",
+    "participle": "drawn",
+    "S-ES-IES": "draws",
+    "ing-form": "drawing",
+    "spanish": "dibujar"
+  },
+  {
+    "id": 47,
+    "base": "dream",
+    "past": "dreamt",
+    "participle": "dreamt",
+    "S-ES-IES": "dreams",
+    "ing-form": "dreaming",
+    "spanish": "soñar"
+  },
+  {
+    "id": 48,
+    "base": "drink",
+    "past": "drank",
+    "participle": "drunk",
+    "S-ES-IES": "drinks",
+    "ing-form": "drinking",
+    "spanish": "beber"
+  },
+  {
+    "id": 49,
+    "base": "drive",
+    "past": "drove",
+    "participle": "driven",
+    "S-ES-IES": "drives",
+    "ing-form": "driving",
+    "spanish": "conducir"
+  },
+  {
+    "id": 50,
+    "base": "dwell",
+    "past": "dwelt",
+    "participle": "dwelt",
+    "S-ES-IES": "dwells",
+    "ing-form": "dwelling",
+    "spanish": "habitar"
+  }
+]
