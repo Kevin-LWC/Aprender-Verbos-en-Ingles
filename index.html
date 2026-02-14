@@ -3,36 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Verb Trainer</title>
+    <title>Verb Master C2 - Glass Edition</title>
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
 
-    <div class="animated-bg"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-gradient"></div>
+
+    <nav class="top-nav glass-effect-nav">
+        <a href="#" data-folder="verbs" class="nav-link active">Verbs</a>
+        <a href="#" data-folder="phrasal_verbs" class="nav-link">Phrasal Verbs</a>
+        <a href="#" data-folder="pronunciation" class="nav-link">Pronunciation</a>
+        <a href="#" data-folder="slang" class="nav-link">Slang</a>
+        <a href="#" data-folder="idioms" class="nav-link">Idioms</a>
+        <a href="#" data-folder="top3000" class="nav-link">Top 3000</a>
+        <a href="#" data-folder="linkedin" class="nav-link">LinkedIn</a>
+    </nav>
 
     <div class="container">
-        <header>
-            <h1 class="aesthetic-title">Verb Master C2</h1>
-            <div class="file-upload-container">
-               <label for="jsonUpload" class="custom-file-upload">
-                    📂 Cargar JSON Manual
-                </label>
-                <input type="file" id="jsonUpload" accept=".json">
+        
+        <div class="control-panel glass-effect-tight">
+            <div class="github-selector-container">
+                <select id="github-file-select" disabled>
+                    <option value="">Selecciona una categoría arriba...</option>
+                </select>
+                <span id="loading-indicator" class="hidden">↻</span>
             </div>
-        </header>
+            
+            <label for="jsonUpload" class="custom-file-upload">
+                 Cargar JSON Manual
+            </label>
+            <input type="file" id="jsonUpload" accept=".json">
+        </div>
 
         <main id="game-area">
-            <div class="card">
+            <div class="card glass-effect-main">
                 <div class="card-header">
-                    <h2 id="prompt-text">Cargando...</h2>
+                    <div class="prompt-container">
+                        <h2 id="prompt-text">Selecciona un tema</h2>
+                        <button id="prompt-audio-btn" class="icon-btn prompt-audio hidden" title="Escuchar pista">🔊</button>
                     </div>
+                </div>
 
                 <div class="inputs-container" id="inputs-container">
                     <div class="input-group" data-type="base">
                         <div class="label-row">
                             <label>Base Form</label>
-                            <button class="icon-btn audio-btn" data-form="base" title="Escuchar">🔊</button>
+                            <button class="icon-btn audio-btn" data-form="base" tabindex="-1">🔊</button>
                         </div>
                         <input type="text" id="input-base" autocomplete="off">
                     </div>
@@ -40,7 +60,7 @@
                     <div class="input-group" data-type="past">
                         <div class="label-row">
                             <label>Past Simple</label>
-                            <button class="icon-btn audio-btn" data-form="past" title="Escuchar">🔊</button>
+                            <button class="icon-btn audio-btn" data-form="past" tabindex="-1">🔊</button>
                         </div>
                         <input type="text" id="input-past" autocomplete="off">
                     </div>
@@ -48,7 +68,7 @@
                     <div class="input-group" data-type="participle">
                         <div class="label-row">
                             <label>Past Participle</label>
-                            <button class="icon-btn audio-btn" data-form="participle" title="Escuchar">🔊</button>
+                            <button class="icon-btn audio-btn" data-form="participle" tabindex="-1">🔊</button>
                         </div>
                         <input type="text" id="input-participle" autocomplete="off">
                     </div>
@@ -61,21 +81,26 @@
 
                 <div id="feedback-message" class="feedback hidden"></div>
 
-                <button id="check-btn">Comprobar</button>
+                <button id="check-btn" class="glass-btn-accent">Comprobar</button>
             </div>
 
             <div class="navigation-panel">
-                <button id="prev-btn" disabled>← Anterior</button>
-                <div id="nav-boxes-container" class="nav-boxes"></div>
-                <button id="next-btn">Siguiente →</button>
+                <button id="prev-btn" class="glass-nav-btn" disabled>← Anterior</button>
+                
+                <div id="nav-boxes-container" class="nav-boxes">
+                    </div>
+
+                <button id="next-btn" class="glass-nav-btn">Siguiente →</button>
             </div>
         </main>
 
         <div id="results-modal" class="modal hidden">
-            <div class="modal-content card">
+            <div class="modal-content card glass-effect-main">
                 <h2>¡Completado!</h2>
                 <p id="score-text">Tu puntuación: 0%</p>
-                <button id="restart-btn">Volver a empezar</button>
+                <div class="modal-buttons">
+                    <button id="restart-btn" class="glass-btn-accent">Reiniciar lista</button>
+                </div>
             </div>
         </div>
     </div>
