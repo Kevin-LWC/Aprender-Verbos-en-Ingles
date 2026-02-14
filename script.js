@@ -42,6 +42,8 @@ const resultsModal = document.getElementById('results-modal');
 const scoreText = document.getElementById('score-text');
 const githubFileSelect = document.getElementById('github-file-select');
 const navLinks = document.querySelectorAll('.nav-link');
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu = document.getElementById('mobile-menu');
 const loadingIndicator = document.getElementById('loading-indicator');
 const checkBtn = document.getElementById('check-btn');
 
@@ -59,6 +61,29 @@ navLinks.forEach(link => {
         loadCategory(link.getAttribute('data-folder'));
     });
 });
+
+// Mobile menu handling (toggle and link clicks)
+if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Delegate click events to mobile menu links
+    mobileMenu.querySelectorAll('.nav-link').forEach(mlink => {
+        mlink.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Close mobile menu
+            mobileMenu.classList.add('hidden');
+            // Remove active from desktop links and set correct active
+            document.querySelectorAll('.top-nav .nav-link').forEach(dl => dl.classList.remove('active'));
+            // Also mark desktop link with same data-folder active if exists
+            const folder = mlink.getAttribute('data-folder');
+            const matching = document.querySelector(`.top-nav .nav-link[data-folder="${folder}"]`);
+            if (matching) matching.classList.add('active');
+            loadCategory(folder);
+        });
+    });
+}
 
 async function loadCategory(folderName) {
     loadingIndicator.classList.remove('hidden');
