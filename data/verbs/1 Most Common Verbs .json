@@ -4,7 +4,7 @@
     "base": "be",
     "past": "was/were",
     "participle": "been",
-    "S-ES-IES": "is",
+    "S-ES-IES": "is/are",
     "ing-form": "being",
     "spanish": "ser/estar"
   },
@@ -179,4 +179,5 @@
     "ing-form": "calling",
     "spanish": "llamar"
   }
+
 ]
