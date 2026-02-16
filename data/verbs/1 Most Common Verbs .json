@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "base": "be",
+    "past": "was/were",
+    "participle": "been",
+    "S-ES-IES": "is",
+    "ing-form": "being",
+    "spanish": "ser/estar"
+  },
+  {
+    "id": 2,
+    "base": "have",
+    "past": "had",
+    "participle": "had",
+    "S-ES-IES": "has",
+    "ing-form": "having",
+    "spanish": "tener"
+  },
+  {
+    "id": 3,
+    "base": "do",
+    "past": "did",
+    "participle": "done",
+    "S-ES-IES": "does",
+    "ing-form": "doing",
+    "spanish": "hacer"
+  },
+  {
+    "id": 4,
+    "base": "say",
+    "past": "said",
+    "participle": "said",
+    "S-ES-IES": "says",
+    "ing-form": "saying",
+    "spanish": "decir"
+  },
+  {
+    "id": 5,
+    "base": "go",
+    "past": "went",
+    "participle": "gone",
+    "S-ES-IES": "goes",
+    "ing-form": "going",
+    "spanish": "ir"
+  },
+  {
+    "id": 6,
+    "base": "get",
+    "past": "got",
+    "participle": "got/gotten",
+    "S-ES-IES": "gets",
+    "ing-form": "getting",
+    "spanish": "obtener"
+  },
+  {
+    "id": 7,
+    "base": "make",
+    "past": "made",
+    "participle": "made",
+    "S-ES-IES": "makes",
+    "ing-form": "making",
+    "spanish": "hacer"
+  },
+  {
+    "id": 8,
+    "base": "know",
+    "past": "knew",
+    "participle": "known",
+    "S-ES-IES": "knows",
+    "ing-form": "knowing",
+    "spanish": "saber/conocer"
+  },
+  {
+    "id": 9,
+    "base": "think",
+    "past": "thought",
+    "participle": "thought",
+    "S-ES-IES": "thinks",
+    "ing-form": "thinking",
+    "spanish": "pensar"
+  },
+  {
+    "id": 10,
+    "base": "take",
+    "past": "took",
+    "participle": "taken",
+    "S-ES-IES": "takes",
+    "ing-form": "taking",
+    "spanish": "tomar"
+  },
+  {
+    "id": 11,
+    "base": "see",
+    "past": "saw",
+    "participle": "seen",
+    "S-ES-IES": "sees",
+    "ing-form": "seeing",
+    "spanish": "ver"
+  },
+  {
+    "id": 12,
+    "base": "come",
+    "past": "came",
+    "participle": "come",
+    "S-ES-IES": "comes",
+    "ing-form": "coming",
+    "spanish": "venir"
+  },
+  {
+    "id": 13,
+    "base": "want",
+    "past": "wanted",
+    "participle": "wanted",
+    "S-ES-IES": "wants",
+    "ing-form": "wanting",
+    "spanish": "querer"
+  },
+  {
+    "id": 14,
+    "base": "look",
+    "past": "looked",
+    "participle": "looked",
+    "S-ES-IES": "looks",
+    "ing-form": "looking",
+    "spanish": "mirar"
+  },
+  {
+    "id": 15,
+    "base": "use",
+    "past": "used",
+    "participle": "used",
+    "S-ES-IES": "uses",
+    "ing-form": "using",
+    "spanish": "usar"
+  },
+  {
+    "id": 16,
+    "base": "find",
+    "past": "found",
+    "participle": "found",
+    "S-ES-IES": "finds",
+    "ing-form": "finding",
+    "spanish": "encontrar"
+  },
+  {
+    "id": 17,
+    "base": "give",
+    "past": "gave",
+    "participle": "given",
+    "S-ES-IES": "gives",
+    "ing-form": "giving",
+    "spanish": "dar"
+  },
+  {
+    "id": 18,
+    "base": "tell",
+    "past": "told",
+    "participle": "told",
+    "S-ES-IES": "tells",
+    "ing-form": "telling",
+    "spanish": "decir"
+  },
+  {
+    "id": 19,
+    "base": "work",
+    "past": "worked",
+    "participle": "worked",
+    "S-ES-IES": "works",
+    "ing-form": "working",
+    "spanish": "trabajar"
+  },
+  {
+    "id": 20,
+    "base": "call",
+    "past": "called",
+    "participle": "called",
+    "S-ES-IES": "calls",
+    "ing-form": "calling",
+    "spanish": "llamar"
+  }
+]
