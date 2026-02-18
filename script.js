@@ -13,6 +13,7 @@ let userAnswers = [];    // Almacena lo que escribió el usuario {base: "...", p
 let currentMode = 1;     // 1: Mostrar Español, 2: Mostrar Inglés
 let currentPromptText = "";
 let isPhrasalVerbMode = false; // Bandera para saber tipo de juego
+let isConnectorMode = false; // Bandera para conectores
 
 // Elementos del DOM
 const promptText = document.getElementById('prompt-text');
@@ -160,13 +161,20 @@ document.getElementById('jsonUpload').addEventListener('change', (event) => {
 
 // --- Lógica del Juego ---
 function initGame(data) {
-    if (!data || data.length === 0) return;
-    
-    verbData = data;
+    if (!data) return;
+
+    // Algunos JSON de conectores vienen envueltos en { "connectors": [ ... ] }
+    let dataArray = data;
+    if (data && data.connectors && Array.isArray(data.connectors)) dataArray = data.connectors;
+    if (!Array.isArray(dataArray) || dataArray.length === 0) return;
+
+    verbData = dataArray;
     // Detectar si es Phrasal Verb (si tiene propiedad 'verb' y no 'base')
     // Asumimos estructura Phrasal: { verb: "give up", spanish: "rendirse" }
     // Asumimos estructura Verbo: { base: "go", past: "went", participle: "gone", spanish: "ir" }
     isPhrasalVerbMode = (verbData[0].hasOwnProperty('verb') && !verbData[0].hasOwnProperty('base'));
+    // Detectar conectores
+    isConnectorMode = verbData[0].hasOwnProperty('connector') && verbData[0].hasOwnProperty('meaning_es');
 
     currentIndex = 0;
     score = 0;
@@ -232,7 +240,6 @@ function loadQuestion(index) {
 function configureLayout(item) {
     // Ocultar correcciones previas
     Object.values(corrections).forEach(el => el.classList.add('hidden'));
-
     if (isPhrasalVerbMode) {
         // MODO PHRASAL: Usamos 'base' para el phrasal verb, ocultamos past/participle
         labelBase.textContent = "Phrasal Verb";
@@ -261,18 +268,58 @@ function configureLayout(item) {
         // Ajustar atributos de audio
         document.querySelector('.audio-btn[data-form="base"]').setAttribute('data-key', 'base');
     }
+
+    // MODO CONECTORES: mostramos solo un campo para responder (reutilizamos 'base' y 'spanish')
+    if (isConnectorMode) {
+        labelBase.textContent = "Connector";
+        // Ocultar todos, luego mostrar únicamente base y spanish
+        toggleInputVisibility('base', true);
+        toggleInputVisibility('past', false);
+        toggleInputVisibility('participle', false);
+        toggleInputVisibility('sform', false);
+        toggleInputVisibility('ing', false);
+        toggleInputVisibility('spanish', true);
+
+        // Ajustar botones de audio
+        const baseAudioBtn = document.querySelector('.audio-btn[data-form="base"]');
+        if (baseAudioBtn) baseAudioBtn.setAttribute('data-key', 'connector');
+        const spanishAudioBtn = document.querySelector('.audio-btn[data-form="spanish"]');
+        if (spanishAudioBtn) spanishAudioBtn.setAttribute('data-key', 'meaning_es');
+    }
 }
 
 function setupPrompt(item, mode) {
     // Definir qué palabra se muestra arriba
     let promptWord = "";
-    
-    // Modo 1: Español -> Inglés
+
+    // MODO CONECTORES: elegir aleatoriamente si mostramos el connector (ing) o meaning_es (es)
+    if (isConnectorMode) {
+        // mode semantics reused: 1 => show meaning_es (ask connector), 2 => show connector (ask meaning_es)
+        if (mode === 1) {
+            promptWord = item.meaning_es;
+            currentPromptText = "";
+            promptAudioBtn.classList.add('hidden');
+            // ocultar input de spanish (es la pregunta), mostrar base para que el usuario escriba el connector
+            toggleInputVisibility('spanish', false);
+            toggleInputVisibility('base', true);
+        } else {
+            promptWord = item.connector;
+            currentPromptText = item.connector;
+            promptAudioBtn.classList.remove('hidden');
+            // ocultar input base (es la pregunta), mostrar spanish para que el usuario escriba meaning_es
+            toggleInputVisibility('base', false);
+            toggleInputVisibility('spanish', true);
+        }
+
+        promptText.textContent = capitalize(promptWord);
+        return;
+    }
+
+    // Modo 1: Español -> Inglés (verbos)
     if (mode === 1) {
         promptWord = item.spanish;
         currentPromptText = ""; // No audio para español arriba
         promptAudioBtn.classList.add('hidden');
-        
         toggleInputVisibility('spanish', false); // Ocultar input español pues es la pregunta
     } 
     // Modo 2: Inglés -> Resto
@@ -353,16 +400,24 @@ function validateVisuals(item, answers) {
         else fieldsToCheck = ['base', 'past', 'spanish', 'sform', 'ing'];
     }
 
+    // Conectores: solo un campo (según el prompt) y mostraremos example/example_es en la corrección
+    if (isConnectorMode) {
+        if (answers.mode === 1) fieldsToCheck = ['base']; // se mostró meaning_es, se espera connector en 'base'
+        else fieldsToCheck = ['spanish']; // se mostró connector, se espera meaning_es en 'spanish'
+    }
+
     fieldsToCheck.forEach(field => {
         const inputElem = inputs[field];
         const correctElem = corrections[field];
         
         const userVal = (answers[field] || "").trim().toLowerCase();
         
+
         // Obtener valor correcto del JSON
-        // Nota: Si es phrasal mode, el input 'base' se compara con item.verb
         let correctValKey;
-        if (isPhrasalVerbMode && field === 'base') correctValKey = 'verb';
+        if (isConnectorMode) {
+            correctValKey = (field === 'base') ? 'connector' : 'meaning_es';
+        } else if (isPhrasalVerbMode && field === 'base') correctValKey = 'verb';
         else if (field === 'sform') correctValKey = 'S-ES-IES';
         else if (field === 'ing') correctValKey = 'ing-form';
         else correctValKey = field;
@@ -379,11 +434,25 @@ function validateVisuals(item, answers) {
             inputElem.style.backgroundColor = 'rgba(255, 23, 68, 0.1)';
             
             // MOSTRAR CORRECCIÓN
-            correctElem.textContent = `Correcto: ${correctVal}`;
+            if (isConnectorMode) {
+                // Mostrar ejemplo y ejemplo en español
+                const ex = item.example ? item.example : '';
+                const exEs = item.example_es ? item.example_es : '';
+                correctElem.innerHTML = `Correcto: <strong>${correctVal}</strong><br>Ejemplo: ${ex}<br>${exEs}`;
+            } else {
+                correctElem.textContent = `Correcto: ${correctVal}`;
+            }
             correctElem.classList.remove('hidden');
         } else {
             inputElem.style.borderColor = 'var(--accent-green)';
             inputElem.style.backgroundColor = 'rgba(0, 230, 118, 0.1)';
+            // Para correctos en conectores, también mostrar ejemplo debajo
+            if (isConnectorMode) {
+                const ex = item.example ? item.example : '';
+                const exEs = item.example_es ? item.example_es : '';
+                correctElem.innerHTML = `Ejemplo: ${ex}<br>${exEs}`;
+                correctElem.classList.remove('hidden');
+            }
         }
     });
 
@@ -410,18 +479,19 @@ document.querySelectorAll('.audio-btn').forEach(btn => {
 
         const item = verbData[currentIndex];
         if (item && item[key]) {
-            playIndividualAudio(item[key]);
+            const lang = (key === 'meaning_es') ? 'es-ES' : 'en-US';
+            playIndividualAudio(item[key], lang);
         }
     });
 });
 
-function playIndividualAudio(text) {
+function playIndividualAudio(text, lang = 'en-US') {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US'; 
+    utterance.lang = lang; 
     utterance.rate = 0.9; 
     const voices = window.speechSynthesis.getVoices();
-    const preferredVoice = voices.find(v => v.name.includes("Google US English")) || voices.find(v => v.lang === 'en-US');
+    const preferredVoice = voices.find(v => v.lang === lang) || voices[0];
     if (preferredVoice) utterance.voice = preferredVoice;
     window.speechSynthesis.speak(utterance);
 }
