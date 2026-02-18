@@ -1,0 +1,52 @@
+{
+  "connectors": [
+    {
+      "connector": "and",
+      "meaning_es": "y",
+      "example": "I like coffee and tea.",
+      "example_es": "Me gusta el café y el té."
+    },
+    {
+      "connector": "also",
+      "meaning_es": "también",
+      "example": "She speaks French. She also speaks German.",
+      "example_es": "Ella habla francés. También habla alemán."
+    },
+    {
+      "connector": "too",
+      "meaning_es": "también",
+      "example": "He is coming to the party, and I am too.",
+      "example_es": "Él viene a la fiesta, y yo también."
+    },
+    {
+      "connector": "as well",
+      "meaning_es": "también",
+      "example": "They invited John as well.",
+      "example_es": "Invitaron a John también."
+    },
+    {
+      "connector": "in addition",
+      "meaning_es": "además",
+      "example": "In addition, we need to buy some milk.",
+      "example_es": "Además, necesitamos comprar leche."
+    },
+    {
+      "connector": "additionally",
+      "meaning_es": "adicionalmente",
+      "example": "Additionally, the report includes financial data.",
+      "example_es": "Adicionalmente, el informe incluye datos financieros."
+    },
+    {
+      "connector": "besides",
+      "meaning_es": "además",
+      "example": "I don't want to go. Besides, it's raining.",
+      "example_es": "No quiero ir. Además, está lloviendo."
+    },
+    {
+      "connector": "not only… but also",
+      "meaning_es": "no solo… sino también",
+      "example": "She is not only intelligent but also hardworking.",
+      "example_es": "Ella no solo es inteligente, sino también trabajadora."
+    }
+  ]
+}
