@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "base": "move",
+    "past": "moved",
+    "participle": "moved",
+    "S-ES-IES": "moves",
+    "ing-form": "moving",
+    "spanish": "mover"
+  },
+  {
+    "id": 2,
+    "base": "like",
+    "past": "liked",
+    "participle": "liked",
+    "S-ES-IES": "likes",
+    "ing-form": "liking",
+    "spanish": "gustar"
+  },
+  {
+    "id": 3,
+    "base": "live",
+    "past": "lived",
+    "participle": "lived",
+    "S-ES-IES": "lives",
+    "ing-form": "living",
+    "spanish": "vivir"
+  },
+  {
+    "id": 4,
+    "base": "believe",
+    "past": "believed",
+    "participle": "believed",
+    "S-ES-IES": "believes",
+    "ing-form": "believing",
+    "spanish": "creer"
+  },
+  {
+    "id": 5,
+    "base": "hold",
+    "past": "held",
+    "participle": "held",
+    "S-ES-IES": "holds",
+    "ing-form": "holding",
+    "spanish": "sostener"
+  },
+  {
+    "id": 6,
+    "base": "bring",
+    "past": "brought",
+    "participle": "brought",
+    "S-ES-IES": "brings",
+    "ing-form": "bringing",
+    "spanish": "traer"
+  },
+  {
+    "id": 7,
+    "base": "happen",
+    "past": "happened",
+    "participle": "happened",
+    "S-ES-IES": "happens",
+    "ing-form": "happening",
+    "spanish": "suceder"
+  },
+  {
+    "id": 8,
+    "base": "write",
+    "past": "wrote",
+    "participle": "written",
+    "S-ES-IES": "writes",
+    "ing-form": "writing",
+    "spanish": "escribir"
+  },
+  {
+    "id": 9,
+    "base": "provide",
+    "past": "provided",
+    "participle": "provided",
+    "S-ES-IES": "provides",
+    "ing-form": "providing",
+    "spanish": "proveer"
+  },
+  {
+    "id": 10,
+    "base": "sit",
+    "past": "sat",
+    "participle": "sat",
+    "S-ES-IES": "sits",
+    "ing-form": "sitting",
+    "spanish": "sentarse"
+  },
+  {
+    "id": 11,
+    "base": "stand",
+    "past": "stood",
+    "participle": "stood",
+    "S-ES-IES": "stands",
+    "ing-form": "standing",
+    "spanish": "estar de pie"
+  },
+  {
+    "id": 12,
+    "base": "lose",
+    "past": "lost",
+    "participle": "lost",
+    "S-ES-IES": "loses",
+    "ing-form": "losing",
+    "spanish": "perder"
+  },
+  {
+    "id": 13,
+    "base": "pay",
+    "past": "paid",
+    "participle": "paid",
+    "S-ES-IES": "pays",
+    "ing-form": "paying",
+    "spanish": "pagar"
+  },
+  {
+    "id": 14,
+    "base": "meet",
+    "past": "met",
+    "participle": "met",
+    "S-ES-IES": "meets",
+    "ing-form": "meeting",
+    "spanish": "encontrarse"
+  },
+  {
+    "id": 15,
+    "base": "include",
+    "past": "included",
+    "participle": "included",
+    "S-ES-IES": "includes",
+    "ing-form": "including",
+    "spanish": "incluir"
+  },
+  {
+    "id": 16,
+    "base": "continue",
+    "past": "continued",
+    "participle": "continued",
+    "S-ES-IES": "continues",
+    "ing-form": "continuing",
+    "spanish": "continuar"
+  },
+  {
+    "id": 17,
+    "base": "set",
+    "past": "set",
+    "participle": "set",
+    "S-ES-IES": "sets",
+    "ing-form": "setting",
+    "spanish": "poner"
+  },
+  {
+    "id": 18,
+    "base": "learn",
+    "past": "learned/learnt",
+    "participle": "learned/learnt",
+    "S-ES-IES": "learns",
+    "ing-form": "learning",
+    "spanish": "aprender"
+  },
+  {
+    "id": 19,
+    "base": "change",
+    "past": "changed",
+    "participle": "changed",
+    "S-ES-IES": "changes",
+    "ing-form": "changing",
+    "spanish": "cambiar"
+  },
+  {
+    "id": 20,
+    "base": "lead",
+    "past": "led",
+    "participle": "led",
+    "S-ES-IES": "leads",
+    "ing-form": "leading",
+    "spanish": "liderar"
+  }
+]

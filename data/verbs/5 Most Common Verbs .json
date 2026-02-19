@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "base": "wait",
+    "past": "waited",
+    "participle": "waited",
+    "S-ES-IES": "waits",
+    "ing-form": "waiting",
+    "spanish": "esperar"
+  },
+  {
+    "id": 2,
+    "base": "serve",
+    "past": "served",
+    "participle": "served",
+    "S-ES-IES": "serves",
+    "ing-form": "serving",
+    "spanish": "servir"
+  },
+  {
+    "id": 3,
+    "base": "die",
+    "past": "died",
+    "participle": "died",
+    "S-ES-IES": "dies",
+    "ing-form": "dying",
+    "spanish": "morir"
+  },
+  {
+    "id": 4,
+    "base": "send",
+    "past": "sent",
+    "participle": "sent",
+    "S-ES-IES": "sends",
+    "ing-form": "sending",
+    "spanish": "enviar"
+  },
+  {
+    "id": 5,
+    "base": "expect",
+    "past": "expected",
+    "participle": "expected",
+    "S-ES-IES": "expects",
+    "ing-form": "expecting",
+    "spanish": "esperar"
+  },
+  {
+    "id": 6,
+    "base": "build",
+    "past": "built",
+    "participle": "built",
+    "S-ES-IES": "builds",
+    "ing-form": "building",
+    "spanish": "construir"
+  },
+  {
+    "id": 7,
+    "base": "stay",
+    "past": "stayed",
+    "participle": "stayed",
+    "S-ES-IES": "stays",
+    "ing-form": "staying",
+    "spanish": "quedarse"
+  },
+  {
+    "id": 8,
+    "base": "fall",
+    "past": "fell",
+    "participle": "fallen",
+    "S-ES-IES": "falls",
+    "ing-form": "falling",
+    "spanish": "caer"
+  },
+  {
+    "id": 9,
+    "base": "cut",
+    "past": "cut",
+    "participle": "cut",
+    "S-ES-IES": "cuts",
+    "ing-form": "cutting",
+    "spanish": "cortar"
+  },
+  {
+    "id": 10,
+    "base": "reach",
+    "past": "reached",
+    "participle": "reached",
+    "S-ES-IES": "reaches",
+    "ing-form": "reaching",
+    "spanish": "alcanzar"
+  },
+  {
+    "id": 11,
+    "base": "kill",
+    "past": "killed",
+    "participle": "killed",
+    "S-ES-IES": "kills",
+    "ing-form": "killing",
+    "spanish": "matar"
+  },
+  {
+    "id": 12,
+    "base": "remain",
+    "past": "remained",
+    "participle": "remained",
+    "S-ES-IES": "remains",
+    "ing-form": "remaining",
+    "spanish": "permanecer"
+  },
+  {
+    "id": 13,
+    "base": "suggest",
+    "past": "suggested",
+    "participle": "suggested",
+    "S-ES-IES": "suggests",
+    "ing-form": "suggesting",
+    "spanish": "sugerir"
+  },
+  {
+    "id": 14,
+    "base": "raise",
+    "past": "raised",
+    "participle": "raised",
+    "S-ES-IES": "raises",
+    "ing-form": "raising",
+    "spanish": "levantar"
+  },
+  {
+    "id": 15,
+    "base": "pass",
+    "past": "passed",
+    "participle": "passed",
+    "S-ES-IES": "passes",
+    "ing-form": "passing",
+    "spanish": "pasar"
+  },
+  {
+    "id": 16,
+    "base": "sell",
+    "past": "sold",
+    "participle": "sold",
+    "S-ES-IES": "sells",
+    "ing-form": "selling",
+    "spanish": "vender"
+  },
+  {
+    "id": 17,
+    "base": "require",
+    "past": "required",
+    "participle": "required",
+    "S-ES-IES": "requires",
+    "ing-form": "requiring",
+    "spanish": "requerir"
+  },
+  {
+    "id": 18,
+    "base": "report",
+    "past": "reported",
+    "participle": "reported",
+    "S-ES-IES": "reports",
+    "ing-form": "reporting",
+    "spanish": "reportar"
+  },
+  {
+    "id": 19,
+    "base": "decide",
+    "past": "decided",
+    "participle": "decided",
+    "S-ES-IES": "decides",
+    "ing-form": "deciding",
+    "spanish": "decidir"
+  },
+  {
+    "id": 20,
+    "base": "pull",
+    "past": "pulled",
+    "participle": "pulled",
+    "S-ES-IES": "pulls",
+    "ing-form": "pulling",
+    "spanish": "tirar"
+  }
+]

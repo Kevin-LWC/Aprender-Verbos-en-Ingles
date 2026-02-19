@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "base": "understand",
+    "past": "understood",
+    "participle": "understood",
+    "S-ES-IES": "understands",
+    "ing-form": "understanding",
+    "spanish": "entender"
+  },
+  {
+    "id": 2,
+    "base": "watch",
+    "past": "watched",
+    "participle": "watched",
+    "S-ES-IES": "watches",
+    "ing-form": "watching",
+    "spanish": "observar"
+  },
+  {
+    "id": 3,
+    "base": "follow",
+    "past": "followed",
+    "participle": "followed",
+    "S-ES-IES": "follows",
+    "ing-form": "following",
+    "spanish": "seguir"
+  },
+  {
+    "id": 4,
+    "base": "stop",
+    "past": "stopped",
+    "participle": "stopped",
+    "S-ES-IES": "stops",
+    "ing-form": "stopping",
+    "spanish": "detener"
+  },
+  {
+    "id": 5,
+    "base": "create",
+    "past": "created",
+    "participle": "created",
+    "S-ES-IES": "creates",
+    "ing-form": "creating",
+    "spanish": "crear"
+  },
+  {
+    "id": 6,
+    "base": "speak",
+    "past": "spoke",
+    "participle": "spoken",
+    "S-ES-IES": "speaks",
+    "ing-form": "speaking",
+    "spanish": "hablar"
+  },
+  {
+    "id": 7,
+    "base": "read",
+    "past": "read",
+    "participle": "read",
+    "S-ES-IES": "reads",
+    "ing-form": "reading",
+    "spanish": "leer"
+  },
+  {
+    "id": 8,
+    "base": "allow",
+    "past": "allowed",
+    "participle": "allowed",
+    "S-ES-IES": "allows",
+    "ing-form": "allowing",
+    "spanish": "permitir"
+  },
+  {
+    "id": 9,
+    "base": "add",
+    "past": "added",
+    "participle": "added",
+    "S-ES-IES": "adds",
+    "ing-form": "adding",
+    "spanish": "añadir"
+  },
+  {
+    "id": 10,
+    "base": "spend",
+    "past": "spent",
+    "participle": "spent",
+    "S-ES-IES": "spends",
+    "ing-form": "spending",
+    "spanish": "gastar"
+  },
+  {
+    "id": 11,
+    "base": "grow",
+    "past": "grew",
+    "participle": "grown",
+    "S-ES-IES": "grows",
+    "ing-form": "growing",
+    "spanish": "crecer"
+  },
+  {
+    "id": 12,
+    "base": "open",
+    "past": "opened",
+    "participle": "opened",
+    "S-ES-IES": "opens",
+    "ing-form": "opening",
+    "spanish": "abrir"
+  },
+  {
+    "id": 13,
+    "base": "walk",
+    "past": "walked",
+    "participle": "walked",
+    "S-ES-IES": "walks",
+    "ing-form": "walking",
+    "spanish": "caminar"
+  },
+  {
+    "id": 14,
+    "base": "win",
+    "past": "won",
+    "participle": "won",
+    "S-ES-IES": "wins",
+    "ing-form": "winning",
+    "spanish": "ganar"
+  },
+  {
+    "id": 15,
+    "base": "offer",
+    "past": "offered",
+    "participle": "offered",
+    "S-ES-IES": "offers",
+    "ing-form": "offering",
+    "spanish": "ofrecer"
+  },
+  {
+    "id": 16,
+    "base": "remember",
+    "past": "remembered",
+    "participle": "remembered",
+    "S-ES-IES": "remembers",
+    "ing-form": "remembering",
+    "spanish": "recordar"
+  },
+  {
+    "id": 17,
+    "base": "love",
+    "past": "loved",
+    "participle": "loved",
+    "S-ES-IES": "loves",
+    "ing-form": "loving",
+    "spanish": "amar"
+  },
+  {
+    "id": 18,
+    "base": "consider",
+    "past": "considered",
+    "participle": "considered",
+    "S-ES-IES": "considers",
+    "ing-form": "considering",
+    "spanish": "considerar"
+  },
+  {
+    "id": 19,
+    "base": "appear",
+    "past": "appeared",
+    "participle": "appeared",
+    "S-ES-IES": "appears",
+    "ing-form": "appearing",
+    "spanish": "aparecer"
+  },
+  {
+    "id": 20,
+    "base": "buy",
+    "past": "bought",
+    "participle": "bought",
+    "S-ES-IES": "buys",
+    "ing-form": "buying",
+    "spanish": "comprar"
+  }
+]
