@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "base": "try",
+    "past": "tried",
+    "participle": "tried",
+    "S-ES-IES": "tries",
+    "ing-form": "trying",
+    "spanish": "intentar"
+  },
+  {
+    "id": 2,
+    "base": "ask",
+    "past": "asked",
+    "participle": "asked",
+    "S-ES-IES": "asks",
+    "ing-form": "asking",
+    "spanish": "preguntar"
+  },
+  {
+    "id": 3,
+    "base": "need",
+    "past": "needed",
+    "participle": "needed",
+    "S-ES-IES": "needs",
+    "ing-form": "needing",
+    "spanish": "necesitar"
+  },
+  {
+    "id": 4,
+    "base": "feel",
+    "past": "felt",
+    "participle": "felt",
+    "S-ES-IES": "feels",
+    "ing-form": "feeling",
+    "spanish": "sentir"
+  },
+  {
+    "id": 5,
+    "base": "become",
+    "past": "became",
+    "participle": "become",
+    "S-ES-IES": "becomes",
+    "ing-form": "becoming",
+    "spanish": "convertirse"
+  },
+  {
+    "id": 6,
+    "base": "leave",
+    "past": "left",
+    "participle": "left",
+    "S-ES-IES": "leaves",
+    "ing-form": "leaving",
+    "spanish": "dejar"
+  },
+  {
+    "id": 7,
+    "base": "put",
+    "past": "put",
+    "participle": "put",
+    "S-ES-IES": "puts",
+    "ing-form": "putting",
+    "spanish": "poner"
+  },
+  {
+    "id": 8,
+    "base": "mean",
+    "past": "meant",
+    "participle": "meant",
+    "S-ES-IES": "means",
+    "ing-form": "meaning",
+    "spanish": "significar"
+  },
+  {
+    "id": 9,
+    "base": "keep",
+    "past": "kept",
+    "participle": "kept",
+    "S-ES-IES": "keeps",
+    "ing-form": "keeping",
+    "spanish": "mantener"
+  },
+  {
+    "id": 10,
+    "base": "let",
+    "past": "let",
+    "participle": "let",
+    "S-ES-IES": "lets",
+    "ing-form": "letting",
+    "spanish": "permitir"
+  },
+  {
+    "id": 11,
+    "base": "begin",
+    "past": "began",
+    "participle": "begun",
+    "S-ES-IES": "begins",
+    "ing-form": "beginning",
+    "spanish": "comenzar"
+  },
+  {
+    "id": 12,
+    "base": "seem",
+    "past": "seemed",
+    "participle": "seemed",
+    "S-ES-IES": "seems",
+    "ing-form": "seeming",
+    "spanish": "parecer"
+  },
+  {
+    "id": 13,
+    "base": "help",
+    "past": "helped",
+    "participle": "helped",
+    "S-ES-IES": "helps",
+    "ing-form": "helping",
+    "spanish": "ayudar"
+  },
+  {
+    "id": 14,
+    "base": "talk",
+    "past": "talked",
+    "participle": "talked",
+    "S-ES-IES": "talks",
+    "ing-form": "talking",
+    "spanish": "hablar"
+  },
+  {
+    "id": 15,
+    "base": "turn",
+    "past": "turned",
+    "participle": "turned",
+    "S-ES-IES": "turns",
+    "ing-form": "turning",
+    "spanish": "girar"
+  },
+  {
+    "id": 16,
+    "base": "start",
+    "past": "started",
+    "participle": "started",
+    "S-ES-IES": "starts",
+    "ing-form": "starting",
+    "spanish": "comenzar"
+  },
+  {
+    "id": 17,
+    "base": "show",
+    "past": "showed",
+    "participle": "shown",
+    "S-ES-IES": "shows",
+    "ing-form": "showing",
+    "spanish": "mostrar"
+  },
+  {
+    "id": 18,
+    "base": "hear",
+    "past": "heard",
+    "participle": "heard",
+    "S-ES-IES": "hears",
+    "ing-form": "hearing",
+    "spanish": "oír"
+  },
+  {
+    "id": 19,
+    "base": "play",
+    "past": "played",
+    "participle": "played",
+    "S-ES-IES": "plays",
+    "ing-form": "playing",
+    "spanish": "jugar"
+  },
+  {
+    "id": 20,
+    "base": "run",
+    "past": "ran",
+    "participle": "run",
+    "S-ES-IES": "runs",
+    "ing-form": "running",
+    "spanish": "correr"
+  }
+]
