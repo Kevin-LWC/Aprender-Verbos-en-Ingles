@@ -1,0 +1,1250 @@
+[
+  {
+    "word": "Abandon",
+    "translation": "Abandonar",
+    "example_en": "They had to abandon the car.",
+    "example_es": "Tuvieron que abandonar el coche."
+  },
+  {
+    "word": "Ability",
+    "translation": "Habilidad",
+    "example_en": "She has the ability to learn quickly.",
+    "example_es": "Ella tiene la habilidad de aprender rápidamente."
+  },
+  {
+    "word": "Able",
+    "translation": "Capaz",
+    "example_en": "He is able to swim very well.",
+    "example_es": "Él es capaz de nadar muy bien."
+  },
+  {
+    "word": "About",
+    "translation": "Acerca de",
+    "example_en": "We talked about the project.",
+    "example_es": "Hablamos acerca del proyecto."
+  },
+  {
+    "word": "Above",
+    "translation": "Encima de",
+    "example_en": "The picture hangs above the bed.",
+    "example_es": "El cuadro cuelga encima de la cama."
+  },
+  {
+    "word": "Abroad",
+    "translation": "En el extranjero",
+    "example_en": "She studies abroad in Spain.",
+    "example_es": "Ella estudia en el extranjero en España."
+  },
+  {
+    "word": "Absolute",
+    "translation": "Absoluto",
+    "example_en": "I have absolute confidence in you.",
+    "example_es": "Tengo confianza absoluta en ti."
+  },
+  {
+    "word": "Absolutely",
+    "translation": "Absolutamente",
+    "example_en": "I absolutely agree with you.",
+    "example_es": "Estoy absolutamente de acuerdo contigo."
+  },
+  {
+    "word": "Academic",
+    "translation": "Académico",
+    "example_en": "He has strong academic skills.",
+    "example_es": "Él tiene fuertes habilidades académicas."
+  },
+  {
+    "word": "Accept",
+    "translation": "Aceptar",
+    "example_en": "Please accept this gift.",
+    "example_es": "Por favor acepta este regalo."
+  },
+  {
+    "word": "Acceptable",
+    "translation": "Aceptable",
+    "example_en": "The quality is acceptable.",
+    "example_es": "La calidad es aceptable."
+  },
+  {
+    "word": "Access",
+    "translation": "Acceso",
+    "example_en": "You need access to the file.",
+    "example_es": "Necesitas acceso al archivo."
+  },
+  {
+    "word": "Accident",
+    "translation": "Accidente",
+    "example_en": "He was hurt in a car accident.",
+    "example_es": "Él fue herido en un accidente de coche."
+  },
+  {
+    "word": "Accompany",
+    "translation": "Acompañar",
+    "example_en": "May I accompany you to the door?",
+    "example_es": "¿Puedo acompañarte a la puerta?"
+  },
+  {
+    "word": "According to",
+    "translation": "Según",
+    "example_en": "According to the news, it will rain.",
+    "example_es": "Según las noticias, lloverá."
+  },
+  {
+    "word": "Account",
+    "translation": "Cuenta",
+    "example_en": "I opened a bank account.",
+    "example_es": "Abrí una cuenta bancaria."
+  },
+  {
+    "word": "Accurate",
+    "translation": "Preciso",
+    "example_en": "The information is accurate.",
+    "example_es": "La información es precisa."
+  },
+  {
+    "word": "Accuse",
+    "translation": "Acusar",
+    "example_en": "They accuse him of stealing.",
+    "example_es": "Lo acusan de robar."
+  },
+  {
+    "word": "Achieve",
+    "translation": "Lograr",
+    "example_en": "She worked hard to achieve her goals.",
+    "example_es": "Ella trabajó duro para lograr sus metas."
+  },
+  {
+    "word": "Achievement",
+    "translation": "Logro",
+    "example_en": "Winning was a great achievement.",
+    "example_es": "Ganar fue un gran logro."
+  },
+  {
+    "word": "Acknowledge",
+    "translation": "Reconocer",
+    "example_en": "He did not acknowledge my presence.",
+    "example_es": "Él no reconoció mi presencia."
+  },
+  {
+    "word": "Acquire",
+    "translation": "Adquirir",
+    "example_en": "They want to acquire new skills.",
+    "example_es": "Quieren adquirir nuevas habilidades."
+  },
+  {
+    "word": "Across",
+    "translation": "A través de",
+    "example_en": "We walked across the street.",
+    "example_es": "Caminamos a través de la calle."
+  },
+  {
+    "word": "Act",
+    "translation": "Actuar",
+    "example_en": "You need to act now.",
+    "example_es": "Necesitas actuar ahora."
+  },
+  {
+    "word": "Action",
+    "translation": "Acción",
+    "example_en": "Action is better than words.",
+    "example_es": "La acción es mejor que las palabras."
+  },
+  {
+    "word": "Active",
+    "translation": "Activo",
+    "example_en": "He leads an active lifestyle.",
+    "example_es": "Él lleva un estilo de vida activo."
+  },
+  {
+    "word": "Activity",
+    "translation": "Actividad",
+    "example_en": "Swimming is a fun activity.",
+    "example_es": "Nadar es una actividad divertida."
+  },
+  {
+    "word": "Actor",
+    "translation": "Actor",
+    "example_en": "He is a famous movie actor.",
+    "example_es": "Él es un actor de cine famoso."
+  },
+  {
+    "word": "Actress",
+    "translation": "Actriz",
+    "example_en": "She is a talented actress.",
+    "example_es": "Ella es una actriz talentosa."
+  },
+  {
+    "word": "Actual",
+    "translation": "Real",
+    "example_en": "The actual cost was higher.",
+    "example_es": "El costo real fue más alto."
+  },
+  {
+    "word": "Actually",
+    "translation": "En realidad",
+    "example_en": "Actually, I prefer tea.",
+    "example_es": "En realidad, prefiero té."
+  },
+  {
+    "word": "Ad",
+    "translation": "Anuncio",
+    "example_en": "I saw an ad on TV.",
+    "example_es": "Vi un anuncio en la TV."
+  },
+  {
+    "word": "Adapt",
+    "translation": "Adaptar",
+    "example_en": "Animals adapt to their environment.",
+    "example_es": "Los animales se adaptan a su entorno."
+  },
+  {
+    "word": "Add",
+    "translation": "Agregar",
+    "example_en": "Please add sugar to the coffee.",
+    "example_es": "Por favor agrega azúcar al café."
+  },
+  {
+    "word": "Addition",
+    "translation": "Adición",
+    "example_en": "In addition, we need more time.",
+    "example_es": "Además, necesitamos más tiempo."
+  },
+  {
+    "word": "Additional",
+    "translation": "Adicional",
+    "example_en": "There is an additional fee.",
+    "example_es": "Hay una tarifa adicional."
+  },
+  {
+    "word": "Address",
+    "translation": "Dirección",
+    "example_en": "What is your home address?",
+    "example_es": "¿Cuál es tu dirección de casa?"
+  },
+  {
+    "word": "Administration",
+    "translation": "Administración",
+    "example_en": "She works in the administration office.",
+    "example_es": "Ella trabaja en la oficina de administración."
+  },
+  {
+    "word": "Admire",
+    "translation": "Admirar",
+    "example_en": "I admire your courage.",
+    "example_es": "Admiro tu coraje."
+  },
+  {
+    "word": "Admit",
+    "translation": "Admitir",
+    "example_en": "He did not admit his mistake.",
+    "example_es": "Él no admitió su error."
+  },
+  {
+    "word": "Adopt",
+    "translation": "Adoptar",
+    "example_en": "They decided to adopt a child.",
+    "example_es": "Decidieron adoptar un niño."
+  },
+  {
+    "word": "Adult",
+    "translation": "Adulto",
+    "example_en": "She is an adult now.",
+    "example_es": "Ella es una adulta ahora."
+  },
+  {
+    "word": "Advance",
+    "translation": "Avance",
+    "example_en": "Technology is in constant advance.",
+    "example_es": "La tecnología está en constante avance."
+  },
+  {
+    "word": "Advanced",
+    "translation": "Avanzado",
+    "example_en": "This is an advanced course.",
+    "example_es": "Este es un curso avanzado."
+  },
+  {
+    "word": "Advantage",
+    "translation": "Ventaja",
+    "example_en": "Height is an advantage in basketball.",
+    "example_es": "La altura es una ventaja en el baloncesto."
+  },
+  {
+    "word": "Adventure",
+    "translation": "Aventura",
+    "example_en": "They went on an adventure.",
+    "example_es": "Fueron en una aventura."
+  },
+  {
+    "word": "Advertise",
+    "translation": "Anunciar",
+    "example_en": "Companies advertise their products.",
+    "example_es": "Las empresas anuncian sus productos."
+  },
+  {
+    "word": "Advertisement",
+    "translation": "Anuncio publicitario",
+    "example_en": "The advertisement was very creative.",
+    "example_es": "El anuncio publicitario fue muy creativo."
+  },
+  {
+    "word": "Advertising",
+    "translation": "Publicidad",
+    "example_en": "He works in advertising.",
+    "example_es": "Él trabaja en publicidad."
+  },
+  {
+    "word": "Advice",
+    "translation": "Consejo",
+    "example_en": "Can you give me some advice?",
+    "example_es": "¿Puedes darme algún consejo?"
+  },
+  {
+    "word": "Advise",
+    "translation": "Aconsejar",
+    "example_en": "I advise you to study hard.",
+    "example_es": "Te aconsejo que estudies duro."
+  },
+  {
+    "word": "Affair",
+    "translation": "Asunto",
+    "example_en": "It is a private affair.",
+    "example_es": "Es un asunto privado."
+  },
+  {
+    "word": "Affect",
+    "translation": "Afectar",
+    "example_en": "The weather can affect your mood.",
+    "example_es": "El clima puede afectar tu humor."
+  },
+  {
+    "word": "Afford",
+    "translation": "Permitirse",
+    "example_en": "I cannot afford a new car.",
+    "example_es": "No puedo permitirme un coche nuevo."
+  },
+  {
+    "word": "Afraid",
+    "translation": "Asustado",
+    "example_en": "She is afraid of the dark.",
+    "example_es": "Ella tiene miedo de la oscuridad."
+  },
+  {
+    "word": "After",
+    "translation": "Después",
+    "example_en": "We will eat after the movie.",
+    "example_es": "Comeremos después de la película."
+  },
+  {
+    "word": "Afternoon",
+    "translation": "Tarde",
+    "example_en": "Good afternoon, how are you?",
+    "example_es": "Buenas tardes, ¿cómo estás?"
+  },
+  {
+    "word": "Afterward",
+    "translation": "Después",
+    "example_en": "We went to dinner afterward.",
+    "example_es": "Fuimos a cenar después."
+  },
+  {
+    "word": "Again",
+    "translation": "De nuevo",
+    "example_en": "Please say that again.",
+    "example_es": "Por favor di eso de nuevo."
+  },
+  {
+    "word": "Against",
+    "translation": "Contra",
+    "example_en": "They played against the champions.",
+    "example_es": "Jugaron contra los campeones."
+  },
+  {
+    "word": "Age",
+    "translation": "Edad",
+    "example_en": "What is your age?",
+    "example_es": "¿Cuál es tu edad?"
+  },
+  {
+    "word": "Agency",
+    "translation": "Agencia",
+    "example_en": "She works for a travel agency.",
+    "example_es": "Ella trabaja para una agencia de viajes."
+  },
+  {
+    "word": "Agenda",
+    "translation": "Agenda",
+    "example_en": "The first item on the agenda is budget.",
+    "example_es": "El primer tema en la agenda es el presupuesto."
+  },
+  {
+    "word": "Agent",
+    "translation": "Agente",
+    "example_en": "He is a real estate agent.",
+    "example_es": "Él es un agente de bienes raíces."
+  },
+  {
+    "word": "Aggressive",
+    "translation": "Agresivo",
+    "example_en": "The dog was very aggressive.",
+    "example_es": "El perro estaba muy agresivo."
+  },
+  {
+    "word": "Ago",
+    "translation": "Hace",
+    "example_en": "I saw him two days ago.",
+    "example_es": "Lo vi hace dos días."
+  },
+  {
+    "word": "Agree",
+    "translation": "Estar de acuerdo",
+    "example_en": "I agree with your plan.",
+    "example_es": "Estoy de acuerdo con tu plan."
+  },
+  {
+    "word": "Agreement",
+    "translation": "Acuerdo",
+    "example_en": "They signed the agreement.",
+    "example_es": "Firmaron el acuerdo."
+  },
+  {
+    "word": "Ah",
+    "translation": "Ah",
+    "example_en": "Ah, I understand now.",
+    "example_es": "Ah, ahora entiendo."
+  },
+  {
+    "word": "Ahead",
+    "translation": "Adelante",
+    "example_en": "Look straight ahead.",
+    "example_es": "Mira recto adelante."
+  },
+  {
+    "word": "Aid",
+    "translation": "Ayuda",
+    "example_en": "They provided financial aid.",
+    "example_es": "Proporcionaron ayuda financiera."
+  },
+  {
+    "word": "Aim",
+    "translation": "Objetivo",
+    "example_en": "Our aim is to win.",
+    "example_es": "Nuestro objetivo es ganar."
+  },
+  {
+    "word": "Air",
+    "translation": "Aire",
+    "example_en": "The air is fresh here.",
+    "example_es": "El aire es fresco aquí."
+  },
+  {
+    "word": "Aircraft",
+    "translation": "Aeronave",
+    "example_en": "The aircraft landed safely.",
+    "example_es": "La aeronave aterrizó safely."
+  },
+  {
+    "word": "Airline",
+    "translation": "Aerolínea",
+    "example_en": "Which airline are you flying?",
+    "example_es": "¿Qué aerolínea estás volando?"
+  },
+  {
+    "word": "Airport",
+    "translation": "Aeropuerto",
+    "example_en": "We arrived at the airport early.",
+    "example_es": "Llegamos al aeropuerto temprano."
+  },
+  {
+    "word": "Alarm",
+    "translation": "Alarma",
+    "example_en": "The fire alarm went off.",
+    "example_es": "La alarma de incendios sonó."
+  },
+  {
+    "word": "Album",
+    "translation": "Álbum",
+    "example_en": "I bought their new album.",
+    "example_es": "Compré su nuevo álbum."
+  },
+  {
+    "word": "Alcohol",
+    "translation": "Alcohol",
+    "example_en": "He does not drink alcohol.",
+    "example_es": "Él no bebe alcohol."
+  },
+  {
+    "word": "Alcoholic",
+    "translation": "Alcohólico",
+    "example_en": "This drink is not alcoholic.",
+    "example_es": "Esta bebida no es alcohólica."
+  },
+  {
+    "word": "Alive",
+    "translation": "Vivo",
+    "example_en": "The fish is still alive.",
+    "example_es": "El pez todavía está vivo."
+  },
+  {
+    "word": "All",
+    "translation": "Todo",
+    "example_en": "All students must attend.",
+    "example_es": "Todos los estudiantes deben asistir."
+  },
+  {
+    "word": "All right",
+    "translation": "Bien",
+    "example_en": "Is everything all right?",
+    "example_es": "¿Está todo bien?"
+  },
+  {
+    "word": "Allow",
+    "translation": "Permitir",
+    "example_en": "They do not allow pets.",
+    "example_es": "No permiten mascotas."
+  },
+  {
+    "word": "Almost",
+    "translation": "Casi",
+    "example_en": "I am almost finished.",
+    "example_es": "Estoy casi terminado."
+  },
+  {
+    "word": "Alone",
+    "translation": "Solo",
+    "example_en": "She lives alone.",
+    "example_es": "Ella vive sola."
+  },
+  {
+    "word": "Along",
+    "translation": "A lo largo de",
+    "example_en": "We walked along the beach.",
+    "example_es": "Caminamos a lo largo de la playa."
+  },
+  {
+    "word": "Already",
+    "translation": "Ya",
+    "example_en": "I have already eaten.",
+    "example_es": "Ya he comido."
+  },
+  {
+    "word": "Also",
+    "translation": "También",
+    "example_en": "He speaks French and also Spanish.",
+    "example_es": "Él habla francés y también español."
+  },
+  {
+    "word": "Alter",
+    "translation": "Alterar",
+    "example_en": "Do not alter the document.",
+    "example_es": "No alteres el documento."
+  },
+  {
+    "word": "Alternative",
+    "translation": "Alternativa",
+    "example_en": "We need an alternative plan.",
+    "example_es": "Necesitamos un plan alternativo."
+  },
+  {
+    "word": "Although",
+    "translation": "Aunque",
+    "example_en": "Although it rained, we went out.",
+    "example_es": "Aunque llovió, salimos."
+  },
+  {
+    "word": "Always",
+    "translation": "Siempre",
+    "example_en": "She is always on time.",
+    "example_es": "Ella siempre está a tiempo."
+  },
+  {
+    "word": "Amazed",
+    "translation": "Sorprendido",
+    "example_en": "I was amazed by the view.",
+    "example_es": "Estaba sorprendido por la vista."
+  },
+  {
+    "word": "Amazing",
+    "translation": "Increíble",
+    "example_en": "The show was amazing.",
+    "example_es": "El show fue increíble."
+  },
+  {
+    "word": "Ambition",
+    "translation": "Ambición",
+    "example_en": "He has great ambition.",
+    "example_es": "Él tiene gran ambición."
+  },
+  {
+    "word": "Among",
+    "translation": "Entre",
+    "example_en": "She was among the winners.",
+    "example_es": "Ella estaba entre los ganadores."
+  },
+  {
+    "word": "Amount",
+    "translation": "Cantidad",
+    "example_en": "Pay the full amount.",
+    "example_es": "Paga la cantidad completa."
+  },
+  {
+    "word": "Analysis",
+    "translation": "Análisis",
+    "example_en": "The analysis is complete.",
+    "example_es": "El análisis está completo."
+  },
+  {
+    "word": "Analyze",
+    "translation": "Analizar",
+    "example_en": "We need to analyze the data.",
+    "example_es": "Necesitamos analizar los datos."
+  },
+  {
+    "word": "Ancient",
+    "translation": "Antiguo",
+    "example_en": "They visited ancient ruins.",
+    "example_es": "Visitaron ruinas antiguas."
+  },
+  {
+    "word": "And",
+    "translation": "Y",
+    "example_en": "Bread and butter.",
+    "example_es": "Pan y mantequilla."
+  },
+  {
+    "word": "Anger",
+    "translation": "Ira",
+    "example_en": "He shouted in anger.",
+    "example_es": "Él gritó con ira."
+  },
+  {
+    "word": "Angle",
+    "translation": "Ángulo",
+    "example_en": "Look at it from this angle.",
+    "example_es": "Míralo desde este ángulo."
+  },
+  {
+    "word": "Angry",
+    "translation": "Enojado",
+    "example_en": "She was angry with him.",
+    "example_es": "Ella estaba enojada con él."
+  },
+  {
+    "word": "Animal",
+    "translation": "Animal",
+    "example_en": "The lion is a wild animal.",
+    "example_es": "El león es un animal salvaje."
+  },
+  {
+    "word": "Ankle",
+    "translation": "Tobillo",
+    "example_en": "He twisted his ankle.",
+    "example_es": "Él se torció el tobillo."
+  },
+  {
+    "word": "Anniversary",
+    "translation": "Aniversario",
+    "example_en": "Happy anniversary!",
+    "example_es": "¡Feliz aniversario!"
+  },
+  {
+    "word": "Announce",
+    "translation": "Anunciar",
+    "example_en": "They will announce the winner soon.",
+    "example_es": "Anunciarán al ganador pronto."
+  },
+  {
+    "word": "Announcement",
+    "translation": "Anuncio",
+    "example_en": "Did you hear the announcement?",
+    "example_es": "¿Escuchaste el anuncio?"
+  },
+  {
+    "word": "Annoy",
+    "translation": "Molestar",
+    "example_en": "Do not annoy the dog.",
+    "example_es": "No molestes al perro."
+  },
+  {
+    "word": "Annoyed",
+    "translation": "Molesto",
+    "example_en": "He looked annoyed.",
+    "example_es": "Él parecía molesto."
+  },
+  {
+    "word": "Annoying",
+    "translation": "Molesto",
+    "example_en": "The noise is very annoying.",
+    "example_es": "El ruido es muy molesto."
+  },
+  {
+    "word": "Annual",
+    "translation": "Anual",
+    "example_en": "This is an annual event.",
+    "example_es": "Este es un evento anual."
+  },
+  {
+    "word": "Another",
+    "translation": "Otro",
+    "example_en": "Can I have another cup?",
+    "example_es": "¿Puedo tener otra taza?"
+  },
+  {
+    "word": "Answer",
+    "translation": "Respuesta",
+    "example_en": "What is the correct answer?",
+    "example_es": "¿Cuál es la respuesta correcta?"
+  },
+  {
+    "word": "Anxious",
+    "translation": "Ansioso",
+    "example_en": "She felt anxious before the test.",
+    "example_es": "Ella se sentía ansiosa antes del test."
+  },
+  {
+    "word": "Any",
+    "translation": "Algún",
+    "example_en": "Do you have any questions?",
+    "example_es": "¿Tienes alguna pregunta?"
+  },
+  {
+    "word": "Anybody",
+    "translation": "Cualquiera",
+    "example_en": "Anybody can do it.",
+    "example_es": "Cualquiera puede hacerlo."
+  },
+  {
+    "word": "Anymore",
+    "translation": "Ya no",
+    "example_en": "I do not live there anymore.",
+    "example_es": "Ya no vivo allí."
+  },
+  {
+    "word": "Anyone",
+    "translation": "Cualquiera",
+    "example_en": "Is anyone home?",
+    "example_es": "¿Hay alguien en casa?"
+  },
+  {
+    "word": "Anything",
+    "translation": "Cualquier cosa",
+    "example_en": "You can ask me anything.",
+    "example_es": "Puedes preguntarme cualquier cosa."
+  },
+  {
+    "word": "Anyway",
+    "translation": "De todos modos",
+    "example_en": "Anyway, we should go.",
+    "example_es": "De todos modos, deberíamos ir."
+  },
+  {
+    "word": "Anywhere",
+    "translation": "Cualquier lugar",
+    "example_en": "We can go anywhere.",
+    "example_es": "Podemos ir a cualquier lugar."
+  },
+  {
+    "word": "Apart",
+    "translation": "Aparte",
+    "example_en": "They live apart.",
+    "example_es": "Viven aparte."
+  },
+  {
+    "word": "Apartment",
+    "translation": "Apartamento",
+    "example_en": "She rents an apartment.",
+    "example_es": "Ella alquila un apartamento."
+  },
+  {
+    "word": "Apologize",
+    "translation": "Disculparse",
+    "example_en": "You should apologize to her.",
+    "example_es": "Deberías disculparte con ella."
+  },
+  {
+    "word": "App",
+    "translation": "Aplicación",
+    "example_en": "I downloaded a new app.",
+    "example_es": "Descargué una nueva aplicación."
+  },
+  {
+    "word": "Apparent",
+    "translation": "Aparente",
+    "example_en": "It was apparent he was lying.",
+    "example_es": "Era aparente que él mentía."
+  },
+  {
+    "word": "Apparently",
+    "translation": "Aparentemente",
+    "example_en": "Apparently, it will snow.",
+    "example_es": "Aparentemente, nevará."
+  },
+  {
+    "word": "Appeal",
+    "translation": "Apelar",
+    "example_en": "They decided to appeal the decision.",
+    "example_es": "Decidieron apelar la decisión."
+  },
+  {
+    "word": "Appear",
+    "translation": "Aparecer",
+    "example_en": "He will appear on TV.",
+    "example_es": "Él aparecerá en la TV."
+  },
+  {
+    "word": "Appearance",
+    "translation": "Apariencia",
+    "example_en": "Judging by appearance is wrong.",
+    "example_es": "Juzgar por la apariencia es incorrecto."
+  },
+  {
+    "word": "Apple",
+    "translation": "Manzana",
+    "example_en": "I ate an apple.",
+    "example_es": "Comí una manzana."
+  },
+  {
+    "word": "Application",
+    "translation": "Solicitud",
+    "example_en": "Fill out the application form.",
+    "example_es": "Llena el formulario de solicitud."
+  },
+  {
+    "word": "Apply",
+    "translation": "Aplicar",
+    "example_en": "You should apply for the job.",
+    "example_es": "Deberías aplicar para el trabajo."
+  },
+  {
+    "word": "Appointment",
+    "translation": "Cita",
+    "example_en": "I have a doctor's appointment.",
+    "example_es": "Tengo una cita con el doctor."
+  },
+  {
+    "word": "Appreciate",
+    "translation": "Apreciar",
+    "example_en": "I appreciate your help.",
+    "example_es": "Aprecio tu ayuda."
+  },
+  {
+    "word": "Approach",
+    "translation": "Acercarse",
+    "example_en": "Do not approach the edge.",
+    "example_es": "No te acerques al borde."
+  },
+  {
+    "word": "Appropriate",
+    "translation": "Apropiado",
+    "example_en": "Wear appropriate clothing.",
+    "example_es": "Usa ropa apropiada."
+  },
+  {
+    "word": "Approval",
+    "translation": "Aprobación",
+    "example_en": "We need your approval.",
+    "example_es": "Necesitamos tu aprobación."
+  },
+  {
+    "word": "Approve",
+    "translation": "Aprobar",
+    "example_en": "The boss did not approve it.",
+    "example_es": "El jefe no lo aprobó."
+  },
+  {
+    "word": "Approximately",
+    "translation": "Aproximadamente",
+    "example_en": "It costs approximately ten dollars.",
+    "example_es": "Cuesta aproximadamente diez dólares."
+  },
+  {
+    "word": "April",
+    "translation": "Abril",
+    "example_en": "My birthday is in April.",
+    "example_es": "Mi cumpleaños es en abril."
+  },
+  {
+    "word": "Architect",
+    "translation": "Arquitecto",
+    "example_en": "The architect designed the house.",
+    "example_es": "El arquitecto diseñó la casa."
+  },
+  {
+    "word": "Architecture",
+    "translation": "Arquitectura",
+    "example_en": "She studies architecture.",
+    "example_es": "Ella estudia arquitectura."
+  },
+  {
+    "word": "Area",
+    "translation": "Área",
+    "example_en": "This is a restricted area.",
+    "example_es": "Esta es un área restringida."
+  },
+  {
+    "word": "Argue",
+    "translation": "Discutir",
+    "example_en": "They argue about money.",
+    "example_es": "Ellos discuten sobre dinero."
+  },
+  {
+    "word": "Argument",
+    "translation": "Argumento",
+    "example_en": "He made a strong argument.",
+    "example_es": "Él hizo un argumento fuerte."
+  },
+  {
+    "word": "Arise",
+    "translation": "Surgir",
+    "example_en": "Problems may arise.",
+    "example_es": "Pueden surgir problemas."
+  },
+  {
+    "word": "Arm",
+    "translation": "Brazo",
+    "example_en": "He broke his arm.",
+    "example_es": "Él se rompió el brazo."
+  },
+  {
+    "word": "Armed",
+    "translation": "Armado",
+    "example_en": "The guards were armed.",
+    "example_es": "Los guardias estaban armados."
+  },
+  {
+    "word": "Arms",
+    "translation": "Armas",
+    "example_en": "They laid down their arms.",
+    "example_es": "Ellos depusieron sus armas."
+  },
+  {
+    "word": "Army",
+    "translation": "Ejército",
+    "example_en": "He joined the army.",
+    "example_es": "Él se unió al ejército."
+  },
+  {
+    "word": "Around",
+    "translation": "Alrededor",
+    "example_en": "We walked around the park.",
+    "example_es": "Caminamos alrededor del parque."
+  },
+  {
+    "word": "Arrange",
+    "translation": "Organizar",
+    "example_en": "I will arrange the meeting.",
+    "example_es": "Organizaré la reunión."
+  },
+  {
+    "word": "Arrangement",
+    "translation": "Arreglo",
+    "example_en": "We made an arrangement.",
+    "example_es": "Hicimos un arreglo."
+  },
+  {
+    "word": "Arrest",
+    "translation": "Arrestar",
+    "example_en": "The police will arrest him.",
+    "example_es": "La policía lo arrestará."
+  },
+  {
+    "word": "Arrival",
+    "translation": "Llegada",
+    "example_en": "What time is your arrival?",
+    "example_es": "¿A qué hora es tu llegada?"
+  },
+  {
+    "word": "Arrive",
+    "translation": "Llegar",
+    "example_en": "We will arrive soon.",
+    "example_es": "Llegaremos pronto."
+  },
+  {
+    "word": "Art",
+    "translation": "Arte",
+    "example_en": "She loves modern art.",
+    "example_es": "Ella ama el arte moderno."
+  },
+  {
+    "word": "Article",
+    "translation": "Artículo",
+    "example_en": "I read an interesting article.",
+    "example_es": "Leí un artículo interesante."
+  },
+  {
+    "word": "Artificial",
+    "translation": "Artificial",
+    "example_en": "This is artificial light.",
+    "example_es": "Esta es luz artificial."
+  },
+  {
+    "word": "Artist",
+    "translation": "Artista",
+    "example_en": "He is a talented artist.",
+    "example_es": "Él es un artista talentoso."
+  },
+  {
+    "word": "Artistic",
+    "translation": "Artístico",
+    "example_en": "She has an artistic eye.",
+    "example_es": "Ella tiene un ojo artístico."
+  },
+  {
+    "word": "As",
+    "translation": "Como",
+    "example_en": "Do as I say.",
+    "example_es": "Haz como digo."
+  },
+  {
+    "word": "Ashamed",
+    "translation": "Avergonzado",
+    "example_en": "He was ashamed of his behavior.",
+    "example_es": "Él estaba avergonzado de su comportamiento."
+  },
+  {
+    "word": "Aside",
+    "translation": "A un lado",
+    "example_en": "Step aside, please.",
+    "example_es": "Ponte a un lado, por favor."
+  },
+  {
+    "word": "Ask",
+    "translation": "Preguntar",
+    "example_en": "Can I ask a question?",
+    "example_es": "¿Puedo hacer una pregunta?"
+  },
+  {
+    "word": "Asleep",
+    "translation": "Dormido",
+    "example_en": "The baby is asleep.",
+    "example_es": "El bebé está dormido."
+  },
+  {
+    "word": "Aspect",
+    "translation": "Aspecto",
+    "example_en": "Consider every aspect.",
+    "example_es": "Considera cada aspecto."
+  },
+  {
+    "word": "Assess",
+    "translation": "Evaluar",
+    "example_en": "We need to assess the situation.",
+    "example_es": "Necesitamos evaluar la situación."
+  },
+  {
+    "word": "Assessment",
+    "translation": "Evaluación",
+    "example_en": "The assessment was fair.",
+    "example_es": "La evaluación fue justa."
+  },
+  {
+    "word": "Assignment",
+    "translation": "Tarea",
+    "example_en": "I finished my assignment.",
+    "example_es": "Terminé mi tarea."
+  },
+  {
+    "word": "Assist",
+    "translation": "Asistir",
+    "example_en": "Can you assist me?",
+    "example_es": "¿Puedes asistirme?"
+  },
+  {
+    "word": "Assistant",
+    "translation": "Asistente",
+    "example_en": "She is my personal assistant.",
+    "example_es": "Ella es mi asistente personal."
+  },
+  {
+    "word": "Associate",
+    "translation": "Asociar",
+    "example_en": "I associate summer with heat.",
+    "example_es": "Asocio el verano con el calor."
+  },
+  {
+    "word": "Associated",
+    "translation": "Asociado",
+    "example_en": "He is associated with the company.",
+    "example_es": "Él está asociado con la compañía."
+  },
+  {
+    "word": "Association",
+    "translation": "Asociación",
+    "example_en": "She joined the association.",
+    "example_es": "Ella se unió a la asociación."
+  },
+  {
+    "word": "Assume",
+    "translation": "Asumir",
+    "example_en": "Do not assume anything.",
+    "example_es": "No asumas nada."
+  },
+  {
+    "word": "At",
+    "translation": "En",
+    "example_en": "Meet me at the station.",
+    "example_es": "Encuéntrame en la estación."
+  },
+  {
+    "word": "Athlete",
+    "translation": "Atleta",
+    "example_en": "He is a professional athlete.",
+    "example_es": "Él es un atleta profesional."
+  },
+  {
+    "word": "Atmosphere",
+    "translation": "Atmósfera",
+    "example_en": "The atmosphere was tense.",
+    "example_es": "La atmósfera estaba tensa."
+  },
+  {
+    "word": "Attach",
+    "translation": "Adjuntar",
+    "example_en": "Please attach the file.",
+    "example_es": "Por favor adjunta el archivo."
+  },
+  {
+    "word": "Attack",
+    "translation": "Atacar",
+    "example_en": "The dog did not attack.",
+    "example_es": "El perro no atacó."
+  },
+  {
+    "word": "Attempt",
+    "translation": "Intento",
+    "example_en": "It was a brave attempt.",
+    "example_es": "Fue un intento valiente."
+  },
+  {
+    "word": "Attend",
+    "translation": "Asistir",
+    "example_en": "Will you attend the party?",
+    "example_es": "¿Asistirás a la fiesta?"
+  },
+  {
+    "word": "Attention",
+    "translation": "Atención",
+    "example_en": "Pay attention to the teacher.",
+    "example_es": "Presta atención al profesor."
+  },
+  {
+    "word": "Attitude",
+    "translation": "Actitud",
+    "example_en": "He has a positive attitude.",
+    "example_es": "Él tiene una actitud positiva."
+  },
+  {
+    "word": "Attorney",
+    "translation": "Abogado",
+    "example_en": "She hired an attorney.",
+    "example_es": "Ella contrató un abogado."
+  },
+  {
+    "word": "Attract",
+    "translation": "Atraer",
+    "example_en": "Flowers attract bees.",
+    "example_es": "Las flores atraen abejas."
+  },
+  {
+    "word": "Attraction",
+    "translation": "Atracción",
+    "example_en": "The castle is a main attraction.",
+    "example_es": "El castillo es una atracción principal."
+  },
+  {
+    "word": "Attractive",
+    "translation": "Atractivo",
+    "example_en": "She is very attractive.",
+    "example_es": "Ella es muy atractiva."
+  },
+  {
+    "word": "Audience",
+    "translation": "Audiencia",
+    "example_en": "The audience clapped loudly.",
+    "example_es": "La audiencia aplaudió fuerte."
+  },
+  {
+    "word": "August",
+    "translation": "Agosto",
+    "example_en": "We go on vacation in August.",
+    "example_es": "Vamos de vacaciones en agosto."
+  },
+  {
+    "word": "Aunt",
+    "translation": "Tía",
+    "example_en": "My aunt lives in Chicago.",
+    "example_es": "Mi tía vive en Chicago."
+  },
+  {
+    "word": "Author",
+    "translation": "Autor",
+    "example_en": "Who is the author of this book?",
+    "example_es": "¿Quién es el autor de este libro?"
+  },
+  {
+    "word": "Authority",
+    "translation": "Autoridad",
+    "example_en": "He is an authority on the subject.",
+    "example_es": "Él es una autoridad en el tema."
+  },
+  {
+    "word": "Automatic",
+    "translation": "Automático",
+    "example_en": "The doors are automatic.",
+    "example_es": "Las puertas son automáticas."
+  },
+  {
+    "word": "Automatically",
+    "translation": "Automáticamente",
+    "example_en": "It turns off automatically.",
+    "example_es": "Se apaga automáticamente."
+  },
+  {
+    "word": "Available",
+    "translation": "Disponible",
+    "example_en": "Is this seat available?",
+    "example_es": "¿Este asiento está disponible?"
+  },
+  {
+    "word": "Average",
+    "translation": "Promedio",
+    "example_en": "The average temperature is high.",
+    "example_es": "La temperatura promedio es alta."
+  },
+  {
+    "word": "Avoid",
+    "translation": "Evitar",
+    "example_en": "Try to avoid mistakes.",
+    "example_es": "Trata de evitar errores."
+  },
+  {
+    "word": "Award",
+    "translation": "Premio",
+    "example_en": "She won an award.",
+    "example_es": "Ella ganó un premio."
+  },
+  {
+    "word": "Aware",
+    "translation": "Consciente",
+    "example_en": "I am aware of the risk.",
+    "example_es": "Soy consciente del riesgo."
+  },
+  {
+    "word": "Away",
+    "translation": "Lejos",
+    "example_en": "He went away for the weekend.",
+    "example_es": "Él se fue lejos para el fin de semana."
+  },
+  {
+    "word": "Awesome",
+    "translation": "Impresionante",
+    "example_en": "The view was awesome.",
+    "example_es": "La vista fue impresionante."
+  },
+  {
+    "word": "Awful",
+    "translation": "Terrible",
+    "example_en": "The weather was awful.",
+    "example_es": "El clima fue terrible."
+  }
+]
