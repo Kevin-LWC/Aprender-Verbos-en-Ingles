@@ -14,6 +14,7 @@ let currentMode = 1;     // 1: Mostrar Español, 2: Mostrar Inglés
 let currentPromptText = "";
 let isPhrasalVerbMode = false; // Bandera para saber tipo de juego
 let isConnectorMode = false; // Bandera para conectores
+let isTop3000Mode = false; // Bandera para Top 3000
 
 // Elementos del DOM
 const promptText = document.getElementById('prompt-text');
@@ -169,12 +170,20 @@ function initGame(data) {
     if (!Array.isArray(dataArray) || dataArray.length === 0) return;
 
     verbData = dataArray;
-    // Detectar si es Phrasal Verb (si tiene propiedad 'verb' y no 'base')
-    // Asumimos estructura Phrasal: { verb: "give up", spanish: "rendirse" }
-    // Asumimos estructura Verbo: { base: "go", past: "went", participle: "gone", spanish: "ir" }
-    isPhrasalVerbMode = (verbData[0].hasOwnProperty('verb') && !verbData[0].hasOwnProperty('base'));
-    // Detectar conectores
-    isConnectorMode = verbData[0].hasOwnProperty('connector') && verbData[0].hasOwnProperty('meaning_es');
+    
+    // Reset all modes
+    isPhrasalVerbMode = false;
+    isConnectorMode = false;
+    isTop3000Mode = false;
+
+    // Detect mode based on data structure
+    if (verbData[0].hasOwnProperty('verb') && !verbData[0].hasOwnProperty('base')) {
+        isPhrasalVerbMode = true;
+    } else if (verbData[0].hasOwnProperty('connector') && verbData[0].hasOwnProperty('meaning_es')) {
+        isConnectorMode = true;
+    } else if (verbData[0].hasOwnProperty('word') && verbData[0].hasOwnProperty('translation')) {
+        isTop3000Mode = true;
+    }
 
     currentIndex = 0;
     score = 0;
@@ -240,21 +249,37 @@ function loadQuestion(index) {
 function configureLayout(item) {
     // Ocultar correcciones previas
     Object.values(corrections).forEach(el => el.classList.add('hidden'));
+
     if (isPhrasalVerbMode) {
-        // MODO PHRASAL: Usamos 'base' para el phrasal verb, ocultamos past/participle
         labelBase.textContent = "Phrasal Verb";
-        
-        // Mapeo: Base -> Visible (Phrasal), Past -> Hidden, Part -> Hidden, Spanish -> Visible
         toggleInputVisibility('base', true);
         toggleInputVisibility('past', false);
         toggleInputVisibility('participle', false);
         toggleInputVisibility('sform', false);
         toggleInputVisibility('ing', false);
         toggleInputVisibility('spanish', true);
-
-        // Ajustar atributos de audio para que lean la propiedad correcta 'verb'
         document.querySelector('.audio-btn[data-form="base"]').setAttribute('data-key', 'verb');
-
+    } else if (isConnectorMode) {
+        labelBase.textContent = "Connector";
+        toggleInputVisibility('base', true);
+        toggleInputVisibility('past', false);
+        toggleInputVisibility('participle', false);
+        toggleInputVisibility('sform', false);
+        toggleInputVisibility('ing', false);
+        toggleInputVisibility('spanish', true);
+        const baseAudioBtn = document.querySelector('.audio-btn[data-form="base"]');
+        if (baseAudioBtn) baseAudioBtn.setAttribute('data-key', 'connector');
+        const spanishAudioBtn = document.querySelector('.audio-btn[data-form="spanish"]');
+        if (spanishAudioBtn) spanishAudioBtn.setAttribute('data-key', 'meaning_es');
+    } else if (isTop3000Mode) {
+        labelBase.textContent = "Word";
+        toggleInputVisibility('base', true);
+        toggleInputVisibility('past', false);
+        toggleInputVisibility('participle', false);
+        toggleInputVisibility('sform', false);
+        toggleInputVisibility('ing', false);
+        toggleInputVisibility('spanish', true);
+        document.querySelector('.audio-btn[data-form="base"]').setAttribute('data-key', 'word');
     } else {
         // MODO VERBO REGULAR
         labelBase.textContent = "Base Form";
@@ -264,27 +289,7 @@ function configureLayout(item) {
         toggleInputVisibility('sform', true);
         toggleInputVisibility('ing', true);
         toggleInputVisibility('spanish', true);
-        
-        // Ajustar atributos de audio
         document.querySelector('.audio-btn[data-form="base"]').setAttribute('data-key', 'base');
-    }
-
-    // MODO CONECTORES: mostramos solo un campo para responder (reutilizamos 'base' y 'spanish')
-    if (isConnectorMode) {
-        labelBase.textContent = "Connector";
-        // Ocultar todos, luego mostrar únicamente base y spanish
-        toggleInputVisibility('base', true);
-        toggleInputVisibility('past', false);
-        toggleInputVisibility('participle', false);
-        toggleInputVisibility('sform', false);
-        toggleInputVisibility('ing', false);
-        toggleInputVisibility('spanish', true);
-
-        // Ajustar botones de audio
-        const baseAudioBtn = document.querySelector('.audio-btn[data-form="base"]');
-        if (baseAudioBtn) baseAudioBtn.setAttribute('data-key', 'connector');
-        const spanishAudioBtn = document.querySelector('.audio-btn[data-form="spanish"]');
-        if (spanishAudioBtn) spanishAudioBtn.setAttribute('data-key', 'meaning_es');
     }
 }
 
@@ -292,25 +297,38 @@ function setupPrompt(item, mode) {
     // Definir qué palabra se muestra arriba
     let promptWord = "";
 
-    // MODO CONECTORES: elegir aleatoriamente si mostramos el connector (ing) o meaning_es (es)
     if (isConnectorMode) {
-        // mode semantics reused: 1 => show meaning_es (ask connector), 2 => show connector (ask meaning_es)
-        if (mode === 1) {
+        if (mode === 1) { // Muestra español, pregunta conector
             promptWord = item.meaning_es;
             currentPromptText = "";
             promptAudioBtn.classList.add('hidden');
-            // ocultar input de spanish (es la pregunta), mostrar base para que el usuario escriba el connector
             toggleInputVisibility('spanish', false);
             toggleInputVisibility('base', true);
-        } else {
+        } else { // Muestra conector, pregunta español
             promptWord = item.connector;
             currentPromptText = item.connector;
             promptAudioBtn.classList.remove('hidden');
-            // ocultar input base (es la pregunta), mostrar spanish para que el usuario escriba meaning_es
             toggleInputVisibility('base', false);
             toggleInputVisibility('spanish', true);
         }
+        promptText.textContent = capitalize(promptWord);
+        return;
+    }
 
+    if (isTop3000Mode) {
+        if (mode === 1) { // Muestra 'translation', pregunta 'word'
+            promptWord = item.translation;
+            currentPromptText = ""; // No audio for Spanish prompt
+            promptAudioBtn.classList.add('hidden');
+            toggleInputVisibility('spanish', false);
+            toggleInputVisibility('base', true);
+        } else { // Muestra 'word', pregunta 'translation'
+            promptWord = item.word;
+            currentPromptText = item.word;
+            promptAudioBtn.classList.remove('hidden');
+            toggleInputVisibility('base', false);
+            toggleInputVisibility('spanish', true);
+        }
         promptText.textContent = capitalize(promptWord);
         return;
     }
@@ -364,6 +382,31 @@ function checkAnswer() {
     // Ejecutar validación visual y lógica
     const isCorrect = validateVisuals(item, currentAnswers);
 
+    if (isTop3000Mode) {
+        const wordInput = inputs.base;
+        const translationInput = inputs.spanish;
+
+        toggleInputVisibility('base', true);
+        toggleInputVisibility('spanish', true);
+
+        wordInput.disabled = true;
+        translationInput.disabled = true;
+
+        if (currentAnswers.mode === 1) { // Prompt was translation
+            translationInput.value = item.translation;
+        } else { // Prompt was word
+            wordInput.value = item.word;
+        }
+
+        if (!isCorrect) {
+            if (currentAnswers.mode === 1) {
+                wordInput.value = item.word;
+            } else {
+                translationInput.value = item.translation;
+            }
+        }
+    }
+
     if (isCorrect) {
         showFeedback("✅ ¡Correcto!", "success");
         triggerConfetti();
@@ -385,25 +428,21 @@ function checkAnswer() {
 function validateVisuals(item, answers) {
     let allCorrect = true;
     
-    // Determinar qué campos debemos validar según el modo actual
     let fieldsToCheck = [];
 
     if (isPhrasalVerbMode) {
-        // Phrasal: 'base' (input donde va el verbo) y 'spanish'
-        // Si el prompt es español (modo 1), validamos 'base' (phrasal)
-        // Si el prompt es inglés (modo 2), validamos 'spanish'
         if (answers.mode === 1) fieldsToCheck = ['base']; 
         else fieldsToCheck = ['spanish'];
+    } else if (isConnectorMode) {
+        if (answers.mode === 1) fieldsToCheck = ['base'];
+        else fieldsToCheck = ['spanish'];
+    } else if (isTop3000Mode) {
+        if (answers.mode === 1) fieldsToCheck = ['base']; // prompt was translation, check word (in base)
+        else fieldsToCheck = ['spanish']; // prompt was word, check translation (in spanish)
     } else {
-        // Verbos: Base, Past, Participle, Spanish
+        // Verbos
         if (answers.mode === 1) fieldsToCheck = ['base', 'past', 'participle', 'sform', 'ing'];
         else fieldsToCheck = ['base', 'past', 'spanish', 'sform', 'ing'];
-    }
-
-    // Conectores: solo un campo (según el prompt) y mostraremos example/example_es en la corrección
-    if (isConnectorMode) {
-        if (answers.mode === 1) fieldsToCheck = ['base']; // se mostró meaning_es, se espera connector en 'base'
-        else fieldsToCheck = ['spanish']; // se mostró connector, se espera meaning_es en 'spanish'
     }
 
     fieldsToCheck.forEach(field => {
@@ -412,15 +451,20 @@ function validateVisuals(item, answers) {
         
         const userVal = (answers[field] || "").trim().toLowerCase();
         
-
-        // Obtener valor correcto del JSON
         let correctValKey;
         if (isConnectorMode) {
             correctValKey = (field === 'base') ? 'connector' : 'meaning_es';
-        } else if (isPhrasalVerbMode && field === 'base') correctValKey = 'verb';
-        else if (field === 'sform') correctValKey = 'S-ES-IES';
-        else if (field === 'ing') correctValKey = 'ing-form';
-        else correctValKey = field;
+        } else if (isTop3000Mode) {
+            correctValKey = (field === 'base') ? 'word' : 'translation';
+        } else if (isPhrasalVerbMode && field === 'base') {
+            correctValKey = 'verb';
+        } else if (field === 'sform') {
+            correctValKey = 'S-ES-IES';
+        } else if (field === 'ing') {
+            correctValKey = 'ing-form';
+        } else {
+            correctValKey = field;
+        }
 
         const correctVal = (item[correctValKey] || "").toLowerCase();
 
@@ -434,22 +478,21 @@ function validateVisuals(item, answers) {
             inputElem.style.backgroundColor = 'rgba(255, 23, 68, 0.1)';
             
             // MOSTRAR CORRECCIÓN
-            if (isConnectorMode) {
-                // Mostrar ejemplo y ejemplo en español
-                const ex = item.example ? item.example : '';
-                const exEs = item.example_es ? item.example_es : '';
-                correctElem.innerHTML = `Correcto: <strong>${correctVal}</strong><br>Ejemplo: ${ex}<br>${exEs}`;
-            } else {
-                correctElem.textContent = `Correcto: ${correctVal}`;
+            let correctionHTML = `Correcto: <strong>${correctVal}</strong>`;
+            if (isConnectorMode || isTop3000Mode) {
+                const ex = item.example_en || item.example || '';
+                const exEs = item.example_es || '';
+                correctionHTML += `<br>Ejemplo: ${ex}<br>${exEs}`;
             }
+            correctElem.innerHTML = correctionHTML;
             correctElem.classList.remove('hidden');
         } else {
             inputElem.style.borderColor = 'var(--accent-green)';
             inputElem.style.backgroundColor = 'rgba(0, 230, 118, 0.1)';
-            // Para correctos en conectores, también mostrar ejemplo debajo
-            if (isConnectorMode) {
-                const ex = item.example ? item.example : '';
-                const exEs = item.example_es ? item.example_es : '';
+            
+            if (isConnectorMode || isTop3000Mode) {
+                const ex = item.example_en || item.example || '';
+                const exEs = item.example_es || '';
                 correctElem.innerHTML = `Ejemplo: ${ex}<br>${exEs}`;
                 correctElem.classList.remove('hidden');
             }
